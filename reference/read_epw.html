@@ -76,6 +76,9 @@ with some simplifications. For more details on Epw, please see Epw Class." />
   </a>
 </li>
 <li>
+  <a href="../articles/eplusr.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -106,7 +109,7 @@ with some simplifications. For more details on Epw, please see Epw Class." />
     
     <p><code>read_epw()</code> parses an EPW file and returns an <code>Epw</code> object. The parsing
 process is extreme inspired by <a href='https://openstudio-sdk-documentation.s3.amazonaws.com/cpp/OpenStudio-2.5.1-doc/utilities/html/classopenstudio_1_1_epw_file.html'>OpenStudio utilities library</a>
-with some simplifications. For more details on <code>Epw</code>, please see Epw Class.</p>
+with some simplifications. For more details on <code>Epw</code>, please see <a href='epw.html'>Epw Class</a>.</p>
     
     </div>
 
@@ -127,9 +130,26 @@ with some simplifications. For more details on <code>Epw</code>, please see Epw 
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Epw class</p></div>
+    <div class='dont-index'><p><a href='epw.html'>Epw class</a></p></div>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># read an EPW file from EnergyPlus v8.8 installation folder</span>
+<span class='kw'>if</span> (<span class='fu'><a href='use_eplus.html'>is_avail_eplus</a></span>(<span class='fl'>8.8</span>)) {
+    <span class='no'>path_epw</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(
+        <span class='fu'><a href='use_eplus.html'>eplus_config</a></span>(<span class='fl'>8.8</span>)$<span class='no'>dir</span>,
+        <span class='st'>"WeatherData"</span>,
+        <span class='st'>"USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw"</span>
+   )
+   <span class='no'>epw</span> <span class='kw'>&lt;-</span> <span class='fu'>read_epw</span>(<span class='no'>path_epw</span>)
+}</div><span class='co'># NOT RUN {</span>
+<span class='co'># read an EPW file from EnergyPlus website</span>
+<span class='no'>path_base</span> <span class='kw'>&lt;-</span> <span class='st'>"https://energyplus.net/weather-download"</span>
+<span class='no'>path_region</span> <span class='kw'>&lt;-</span> <span class='st'>"north_and_central_america_wmo_region_4/USA/CA"</span>
+<span class='no'>path_file</span> <span class='kw'>&lt;-</span> <span class='st'>"USA_CA_San.Francisco.Intl.AP.724940_TMY3/USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw"</span>
+<span class='no'>path_epw</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(<span class='no'>path_base</span>, <span class='no'>path_region</span>, <span class='no'>path_file</span>)
+<span class='no'>epw</span> <span class='kw'>&lt;-</span> <span class='fu'>read_epw</span>(<span class='no'>path_epw</span>)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -139,7 +159,13 @@ with some simplifications. For more details on <code>Epw</code>, please see Epw 
       <li><a href="#value">Value</a></li>
 
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
+
+    <h2>Author</h2>
+    
+Hongyuan Jia
 
   </div>
 </div>
