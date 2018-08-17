@@ -186,8 +186,7 @@ a more friendly interface to run EnergyPlus simulations and collect outputs.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='no'>idf_path</span> <span class='kw'>&lt;-</span> <span class='fu'>system.file</span>(<span class='st'>"extdata/1ZoneUncontrolled.idf"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"eplusr"</span>)
+    <pre class="examples"><div class='input'><span class='no'>idf_path</span> <span class='kw'>&lt;-</span> <span class='fu'>system.file</span>(<span class='st'>"extdata/1ZoneUncontrolled.idf"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"eplusr"</span>)
 
 <span class='kw'>if</span> (<span class='fu'><a href='use_eplus.html'>is_avail_eplus</a></span>(<span class='fl'>8.8</span>)) {
     <span class='co'># run a single model</span>
@@ -206,8 +205,156 @@ a more friendly interface to run EnergyPlus simulations and collect outputs.</p>
     <span class='no'>epw_paths</span> <span class='kw'>&lt;-</span> <span class='fu'>rep</span>(<span class='no'>epw_path</span>, <span class='kw'>times</span> <span class='kw'>=</span> <span class='fl'>2L</span>)
     <span class='no'>output_dirs</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(<span class='fu'>tempdir</span>(), <span class='kw pkg'>tools</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tools/topics/fileutils'>file_path_sans_ext</a></span>(<span class='fu'>basename</span>(<span class='no'>idf_paths</span>)))
     <span class='fu'>run_multi</span>(<span class='fl'>8.8</span>, <span class='no'>idf_paths</span>, <span class='no'>epw_paths</span>, <span class='kw'>output_dir</span> <span class='kw'>=</span> <span class='no'>output_dirs</span>)
-}
-<span class='co'># }</span></pre>
+}</div><div class='output co'>#&gt; ExpandObjects Started.
+#&gt; No expanded file generated.
+#&gt; ExpandObjects Finished. Time:     0.000
+#&gt; EnergyPlus Starting
+#&gt; EnergyPlus, Version 8.8.0-7c3bbe4830, YMD=2018.08.17 19:14
+#&gt; Processing Data Dictionary
+#&gt; Processing Input File
+#&gt; Initializing Simulation
+#&gt; Reporting Surfaces
+#&gt; Beginning Primary Simulation
+#&gt; Initializing New Environment Parameters
+#&gt; Warming up {1}
+#&gt; Warming up {2}
+#&gt; Warming up {3}
+#&gt; Warming up {4}
+#&gt; Warming up {5}
+#&gt; Warming up {6}
+#&gt; Warming up {7}
+#&gt; Warming up {8}
+#&gt; Warming up {9}
+#&gt; Warming up {10}
+#&gt; Warming up {11}
+#&gt; Warming up {12}
+#&gt; Warming up {13}
+#&gt; Warming up {14}
+#&gt; Warming up {15}
+#&gt; Warming up {16}
+#&gt; Warming up {17}
+#&gt; Warming up {18}
+#&gt; Warming up {19}
+#&gt; Warming up {20}
+#&gt; Warming up {21}
+#&gt; Warming up {22}
+#&gt; Starting Simulation at 12/21 for DENVER CENTENNIAL  GOLDEN   N ANN HTG 99% CONDNS DB
+#&gt; Initializing New Environment Parameters
+#&gt; Warming up {1}
+#&gt; Warming up {2}
+#&gt; Warming up {3}
+#&gt; Warming up {4}
+#&gt; Warming up {5}
+#&gt; Warming up {6}
+#&gt; Warming up {7}
+#&gt; Warming up {8}
+#&gt; Warming up {9}
+#&gt; Warming up {10}
+#&gt; Warming up {11}
+#&gt; Warming up {12}
+#&gt; Warming up {13}
+#&gt; Warming up {14}
+#&gt; Warming up {15}
+#&gt; Warming up {16}
+#&gt; Starting Simulation at 07/21 for DENVER CENTENNIAL  GOLDEN   N ANN CLG 1% CONDNS DB=&gt;MWB
+#&gt; Initializing New Environment Parameters
+#&gt; Warming up {1}
+#&gt; Warming up {2}
+#&gt; Warming up {3}
+#&gt; Warming up {4}
+#&gt; Warming up {5}
+#&gt; Warming up {6}
+#&gt; Warming up {7}
+#&gt; Warming up {8}
+#&gt; Warming up {9}
+#&gt; Warming up {10}
+#&gt; Warming up {11}
+#&gt; Warming up {12}
+#&gt; Warming up {13}
+#&gt; Warming up {14}
+#&gt; Warming up {15}
+#&gt; Warming up {16}
+#&gt; Warming up {17}
+#&gt; Warming up {18}
+#&gt; Starting Simulation at 01/01 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=01/21
+#&gt; Continuing Simulation at 01/21 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=02/10
+#&gt; Continuing Simulation at 02/10 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=03/02
+#&gt; Continuing Simulation at 03/02 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=03/22
+#&gt; Continuing Simulation at 03/22 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=04/11
+#&gt; Continuing Simulation at 04/11 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=05/01
+#&gt; Continuing Simulation at 05/01 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=05/21
+#&gt; Continuing Simulation at 05/21 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=06/10
+#&gt; Continuing Simulation at 06/10 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=06/30
+#&gt; Continuing Simulation at 06/30 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=07/20
+#&gt; Continuing Simulation at 07/20 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=08/09
+#&gt; Continuing Simulation at 08/09 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=08/29
+#&gt; Continuing Simulation at 08/29 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=09/18
+#&gt; Continuing Simulation at 09/18 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=10/08
+#&gt; Continuing Simulation at 10/08 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=10/28
+#&gt; Continuing Simulation at 10/28 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=11/17
+#&gt; Continuing Simulation at 11/17 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=12/07
+#&gt; Continuing Simulation at 12/07 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=12/27
+#&gt; Continuing Simulation at 12/27 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Writing tabular output file results using comma format.
+#&gt; Writing tabular output file results using tab format.
+#&gt; Writing tabular output file results using text format.
+#&gt; Writing tabular output file results using HTML format.
+#&gt; Writing tabular output file results using XML format.
+#&gt; Writing final SQL reports
+#&gt;  ReadVarsESO program starting.
+#&gt;  ReadVars Run Time=00hr 00min  0.27sec
+#&gt;  ReadVarsESO program completed successfully.
+#&gt;  ReadVarsESO program starting.
+#&gt;  ReadVars Run Time=00hr 00min  0.12sec
+#&gt;  ReadVarsESO program completed successfully.
+#&gt; EnergyPlus Run Time=00hr 00min  2.50sec
+#&gt;  Progress:                                                                  100% Progress:                                                                  100% Progress:                                                                  100% Progress:                                                                  100% Progress:                                                                  100% Progress:                                                                  100% Progress:                                                                  100% Progress:                                                                  100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ──────────────────────────────────────────────────────────────── 100%
+#&gt; </div><div class='output co'>#&gt; [[1]]
+#&gt; [[1]]$status
+#&gt; [1] 0
+#&gt; 
+#&gt; [[1]]$stdout
+#&gt; [1] "ExpandObjects Started.\nNo expanded file generated.\nExpandObjects Finished. Time:     0.004\nEnergyPlus Starting\nEnergyPlus, Version 8.8.0-7c3bbe4830, YMD=2018.08.17 19:14\nProcessing Data Dictionary\nProcessing Input File\nInitializing Simulation\nReporting Surfaces\nBeginning Primary Simulation\nInitializing New Environment Parameters\nWarming up {1}\nWarming up {2}\nWarming up {3}\nWarming up {4}\nWarming up {5}\nWarming up {6}\nWarming up {7}\nWarming up {8}\nWarming up {9}\nWarming up {10}\nWarming up {11}\nWarming up {12}\nWarming up {13}\nWarming up {14}\nWarming up {15}\nWarming up {16}\nWarming up {17}\nWarming up {18}\nWarming up {19}\nWarming up {20}\nWarming up {21}\nWarming up {22}\nStarting Simulation at 12/21 for DENVER CENTENNIAL  GOLDEN   N ANN HTG 99% CONDNS DB\nInitializing New Environment Parameters\nWarming up {1}\nWarming up {2}\nWarming up {3}\nWarming up {4}\nWarming up {5}\nWarming up {6}\nWarming up {7}\nWarming up {8}\nWarming up {9}\nWarming up {10}\nWarming up {11}\nWarming up {12}\nWarming up {13}\nWarming up {14}\nWarming up {15}\nWarming up {16}\nStarting Simulation at 07/21 for DENVER CENTENNIAL  GOLDEN   N ANN CLG 1% CONDNS DB=&gt;MWB\nInitializing New Environment Parameters\nWarming up {1}\nWarming up {2}\nWarming up {3}\nWarming up {4}\nWarming up {5}\nWarming up {6}\nWarming up {7}\nWarming up {8}\nWarming up {9}\nWarming up {10}\nWarming up {11}\nWarming up {12}\nWarming up {13}\nWarming up {14}\nWarming up {15}\nWarming up {16}\nWarming up {17}\nWarming up {18}\nStarting Simulation at 01/01 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=01/21\nContinuing Simulation at 01/21 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=02/10\nContinuing Simulation at 02/10 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=03/02\nContinuing Simulation at 03/02 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=03/22\nContinuing Simulation at 03/22 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=04/11\nContinuing Simulation at 04/11 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=05/01\nContinuing Simulation at 05/01 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=05/21\nContinuing Simulation at 05/21 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=06/10\nContinuing Simulation at 06/10 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=06/30\nContinuing Simulation at 06/30 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=07/20\nContinuing Simulation at 07/20 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=08/09\nContinuing Simulation at 08/09 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=08/29\nContinuing Simulation at 08/29 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=09/18\nContinuing Simulation at 09/18 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=10/08\nContinuing Simulation at 10/08 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=10/28\nContinuing Simulation at 10/28 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=11/17\nContinuing Simulation at 11/17 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=12/07\nContinuing Simulation at 12/07 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=12/27\nContinuing Simulation at 12/27 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nWriting tabular output file results using comma format.\nWriting tabular output file results using tab format.\nWriting tabular output file results using text format.\nWriting tabular output file results using HTML format.\nWriting tabular output file results using XML format.\nWriting final SQL reports\n ReadVarsESO program starting.\n ReadVars Run Time=00hr 00min  0.48sec\n ReadVarsESO program completed successfully.\n ReadVarsESO program starting.\n ReadVars Run Time=00hr 00min  0.20sec\n ReadVarsESO program completed successfully.\nEnergyPlus Run Time=00hr 00min  3.95sec\n"
+#&gt; 
+#&gt; [[1]]$stderr
+#&gt; [1] ""
+#&gt; 
+#&gt; [[1]]$timeout
+#&gt; [1] FALSE
+#&gt; 
+#&gt; 
+#&gt; [[2]]
+#&gt; [[2]]$status
+#&gt; [1] 0
+#&gt; 
+#&gt; [[2]]$stdout
+#&gt; [1] "ExpandObjects Started.\nNo expanded file generated.\nExpandObjects Finished. Time:     0.004\nEnergyPlus Starting\nEnergyPlus, Version 8.8.0-7c3bbe4830, YMD=2018.08.17 19:14\nProcessing Data Dictionary\nProcessing Input File\nInitializing Simulation\nReporting Surfaces\nBeginning Primary Simulation\nInitializing New Environment Parameters\nWarming up {1}\nWarming up {2}\nWarming up {3}\nWarming up {4}\nWarming up {5}\nWarming up {6}\nWarming up {7}\nWarming up {8}\nWarming up {9}\nWarming up {10}\nStarting Simulation at 01/14 for JAN\nWriting tabular output file results using comma format.\nWriting tabular output file results using tab format.\nWriting tabular output file results using text format.\nWriting tabular output file results using HTML format.\nWriting tabular output file results using XML format.\nWriting final SQL reports\n ReadVarsESO program starting.\n ReadVars Run Time=00hr 00min  0.03sec\n ReadVarsESO program completed successfully.\n ReadVarsESO program starting.\n ReadVars Run Time=00hr 00min  0.02sec\n ReadVarsESO program completed successfully.\nEnergyPlus Run Time=00hr 00min  7.27sec\n"
+#&gt; 
+#&gt; [[2]]$stderr
+#&gt; [1] ""
+#&gt; 
+#&gt; [[2]]$timeout
+#&gt; [1] FALSE
+#&gt; 
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

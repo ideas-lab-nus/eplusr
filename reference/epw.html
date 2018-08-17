@@ -544,11 +544,9 @@ value of <code>Sys.timezone()</code>.</p></li>
 #&gt; $tzone
 #&gt; [1] "America/Chicago"
 #&gt; </div><div class='input'>
-</div><span class='co'># NOT RUN {</span>
 <span class='co'># change the weather data</span>
 <span class='co'># NOTE: This feature is experimental. There is no validation when replacing.</span>
 <span class='no'>epw</span>$<span class='fu'>set_data</span>(<span class='no'>epw</span>$<span class='fu'>get_data</span>())
-<span class='co'># }</span><div class='input'>
 <span class='co'># save the weather file</span>
 <span class='no'>epw</span>$<span class='fu'>save</span>(<span class='fu'>file.path</span>(<span class='fu'>tempdir</span>(), <span class='st'>"weather.epw"</span>))</div></pre>
   </div>

@@ -737,8 +737,8 @@ newly added and modified objects at the bottom.</p></li>
 #&gt; *2: R13LAYER;          !- Outside Layer
 #&gt; ────────────────────────────────────────────────────────────────────────────────
 #&gt; </div><div class='input'>
-<span class='co'># duplicate an object multiple times</span>
-<span class='no'>idf</span>$<span class='fu'>dup_object</span>(<span class='fu'>rep</span>(<span class='st'>"R13WALL"</span>, <span class='kw'>time</span> <span class='kw'>=</span> <span class='fl'>10</span>))</div><div class='output co'>#&gt; ── Info ────────────────────────────────────────────────────────────────────────
+# duplicate an object multiple times
+</div><div class='input'><span class='no'>idf</span>$<span class='fu'>dup_object</span>(<span class='fu'>rep</span>(<span class='st'>"R13WALL"</span>, <span class='kw'>time</span> <span class='kw'>=</span> <span class='fl'>10</span>))</div><div class='output co'>#&gt; ── Info ────────────────────────────────────────────────────────────────────────
 #&gt; New names of duplicated objects were not given. Automatically generated names were assigned:
 #&gt;   * Target Object [ID: 15] Name `R13WALL`--&gt; Auto Assigned Name: `R13WALL_2`
 #&gt;   * Target Object [ID: 15] Name `R13WALL`--&gt; Auto Assigned Name: `R13WALL_3`
@@ -916,9 +916,7 @@ newly added and modified objects at the bottom.</p></li>
 #&gt; [1] "C5 - 4 IN HW CONCRETE" "test"                 
 #&gt; </div><div class='input'>
 # $ins_object() is useful when importing design days from a ".ddy" file
-</div><span class='co'># NOT RUN {</span>
-<span class='no'>idf</span>$<span class='fu'>ins_object</span>(<span class='fu'><a href='read_idf.html'>read_idf</a></span>(<span class='st'>"foo.ddy"</span>))
-<span class='co'># }</span><div class='input'>
+</div><div class='input'><span class='no'>idf</span>$<span class='fu'>ins_object</span>(<span class='fu'><a href='read_idf.html'>read_idf</a></span>(<span class='st'>"foo.ddy"</span>))</div><div class='output co'>#&gt; <span class='error'>Error: 'foo.ddy' does not exist in current working directory ('/home/travis/build/hongyuanjia/eplusr/docs/reference').</span></div><div class='input'>
 <span class='co'># ===== SET OBJECTS =====</span>
 <span class='co'># set the thickness of newly inserted material "test" to 0.2 m</span>
 <span class='no'>idf</span>$<span class='fu'>set_object</span>(<span class='st'>"test"</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>thickness</span> <span class='kw'>=</span> <span class='fl'>0.2</span>))</div><div class='output co'>#&gt; $test
@@ -1072,9 +1070,7 @@ newly added and modified objects at the bottom.</p></li>
 #&gt; [01] Output:Table:SummaryReports
 #&gt; [01] OutputControl:Table:Style
 #&gt; [14] Output:Variable
-#&gt; [03] Output:Meter:MeterFileOnly</div><div class='input'><span class='fu'>names</span>(<span class='no'>idf</span>$<span class='no'>Material</span>)</div><div class='output co'>#&gt; [1] "C5_4_IN_HW_CONCRETE"</div><div class='input'><span class='co'># [1] "C5_4_IN_HW_CONCRETE"</span>
-<span class='fu'>names</span>(<span class='no'>idf</span>$<span class='no'>RunPeriod</span>)</div><div class='output co'>#&gt; [1] NA</div><div class='input'><span class='co'># [1] NA</span>
-
+#&gt; [03] Output:Meter:MeterFileOnly</div><div class='input'><span class='fu'>names</span>(<span class='no'>idf</span>$<span class='no'>Material</span>)</div><div class='output co'>#&gt; [1] "C5_4_IN_HW_CONCRETE"</div><div class='input'><span class='fu'>names</span>(<span class='no'>idf</span>$<span class='no'>RunPeriod</span>)</div><div class='output co'>#&gt; [1] NA</div><div class='input'>
 <span class='co'># In "final" validate level, delete will be aborted if the target obejcts are</span>
 <span class='co'># referenced by other objects.</span>
 <span class='co'># get objects that referenced material "R13LAYER"</span>
@@ -1170,15 +1166,13 @@ newly added and modified objects at the bottom.</p></li>
 #&gt; *2: R13LAYER;          !- Outside Layer
 #&gt; ────────────────────────────────────────────────────────────────────────────────
 #&gt; </div><div class='input'><span class='fu'>length</span>(<span class='no'>idf</span>$<span class='no'>Material_NoMass</span>$<span class='no'>R13LAYER</span>$<span class='fu'>ref_by_object</span>())</div><div class='output co'>#&gt; <span class='message'>13 object found that reference the target object [ID: 12].</span></div><div class='output co'>#&gt; [1] 13</div><div class='input'>
-</div><span class='co'># NOT RUN {</span>
-<span class='no'>idf</span>$<span class='fu'>del_object</span>(<span class='st'>"R13LAYER"</span>)
-<span class='co'># }</span><div class='input'> # will give an error in "final" validate level
+</div><div class='input'><span class='no'>idf</span>$<span class='fu'>del_object</span>(<span class='st'>"R13LAYER"</span>)</div><div class='output co'>#&gt; <span class='error'>Error: Deleting an object that is referenced by others is prohibited in `final` validation level. Failed to delete target object [ID:`12`]:</span>
+#&gt; <span class='error'>1: Object [ID:`12`] was referenced by other objects [ID:`15`, `54`, `55`, `56`, `57`, `58`, `59`, `60`, `61`, `62`, `63`, `64` and `65`].</span></div><div class='input'> # will give an error in "final" validate level
 
 # objects referencing target objects can also be delted by setting `referenced`
 # to TRUE
-</div><span class='co'># NOT RUN {</span>
-<span class='no'>idf</span>$<span class='fu'>del_object</span>(<span class='st'>"R13LAYER"</span>, <span class='kw'>referenced</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='co'># }</span><div class='input'> <span class='co'># will give an error in "final" validate level</span>
+</div><div class='input'><span class='no'>idf</span>$<span class='fu'>del_object</span>(<span class='st'>"R13LAYER"</span>, <span class='kw'>referenced</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error: Deleting an object that is referenced by others is prohibited in `final` validation level. Failed to delete target object [ID:`12`]:</span>
+#&gt; <span class='error'>1: Object [ID:`12`] was referenced by other objects [ID:`15`, `54`, `55`, `56`, `57`, `58`, `59`, `60`, `61`, `62`, `63`, `64` and `65`].</span></div><div class='input'> <span class='co'># will give an error in "final" validate level</span>
 
 <span class='co'># ===== SEARCH ADN REPLACE OBJECT VALUES =====</span>
 <span class='co'># get objects whose field values contains both "VAV" and "Node"</span>
@@ -1355,8 +1349,9 @@ newly added and modified objects at the bottom.</p></li>
 #&gt;   \- Object [ID:24]
 #&gt;      +- 3(after) : R13A_WALL,         !- Construction Name
 #&gt;      \- 3(before): R13WALL;           !- Construction Name</div><div class='input'>
-<span class='co'># ===== VALIDATE MODEL =====</span>
-<span class='co'># check if there are errors in current model</span>
+# ===== VALIDATE MODEL =====
+# CRAN does not like long-time tests
+</div><div class='input'><span class='co'># check if there are errors in current model</span>
 <span class='no'>idf</span>$<span class='fu'>validate</span>()</div><div class='output co'>#&gt;  ✔ No error found.</div><div class='input'><span class='no'>idf</span>$<span class='fu'>is_valid</span>()</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
 <span class='co'># change validate level to "none", which will enable invalid modifications</span>
 <span class='fu'><a href='eplusr_option.html'>eplusr_option</a></span>(<span class='kw'>validate_level</span> <span class='kw'>=</span> <span class='st'>"none"</span>)</div><div class='output co'>#&gt; $validate_level
@@ -1393,8 +1388,7 @@ newly added and modified objects at the bottom.</p></li>
 #&gt; *1: FLOOR,             !- Name
 #&gt; *2: C5 - 4 IN HW CONCRETE;  !- Outside Layer
 #&gt; ────────────────────────────────────────────────────────────────────────────────
-#&gt; </div><div class='input'><span class='no'>idf</span>$<span class='fu'>validate</span>()</div><div class='output co'>#&gt;  ✔ No error found.</div><div class='input'><span class='no'>idf</span>$<span class='fu'>is_valid</span>()</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
-<span class='co'># ===== FORMAT MODEL =====</span>
+#&gt; </div><div class='input'><span class='no'>idf</span>$<span class='fu'>validate</span>()</div><div class='output co'>#&gt;  ✔ No error found.</div><div class='input'><span class='no'>idf</span>$<span class='fu'>is_valid</span>()</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='co'># ===== FORMAT MODEL =====</span>
 <span class='co'># get text format of the model</span>
 <span class='fu'>str</span>(<span class='no'>idf</span>$<span class='fu'>string</span>())</div><div class='output co'>#&gt;  chr [1:600] "!-Generator eplusr" "!-Option" ...</div><div class='input'>
 <span class='co'># get text format of the model, excluding the header and all comments</span>
@@ -1403,13 +1397,13 @@ newly added and modified objects at the bottom.</p></li>
 <span class='co'># check if the model has been modified since read or last saved</span>
 <span class='no'>idf</span>$<span class='fu'>is_unsaved</span>()</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
 # save and overwrite current model
-</div><span class='co'># NOT RUN {</span>
-<span class='no'>idf</span>$<span class='fu'>save</span>(<span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='co'># }</span><div class='input'>
+</div><div class='input'><span class='no'>idf</span>$<span class='fu'>save</span>(<span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ── Info ────────────────────────────────────────────────────────────────────────
+#&gt; Replace the existing file located  at /home/travis/build/hongyuanjia/eplusr/inst/extdata/1ZoneUncontrolled.idf.
+#&gt; </div><div class='input'>
 # save the model with newly created and modified objects at the top
-</div><span class='co'># NOT RUN {</span>
-<span class='no'>idf</span>$<span class='fu'>save</span>(<span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"new_top"</span>)
-<span class='co'># }</span><div class='input'>
+</div><div class='input'><span class='no'>idf</span>$<span class='fu'>save</span>(<span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"new_top"</span>)</div><div class='output co'>#&gt; ── Info ────────────────────────────────────────────────────────────────────────
+#&gt; Replace the existing file located  at /home/travis/build/hongyuanjia/eplusr/inst/extdata/1ZoneUncontrolled.idf.
+#&gt; </div><div class='input'>
 <span class='co'># save the model to a new file</span>
 <span class='no'>idf</span>$<span class='fu'>save</span>(<span class='kw'>path</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='fu'>tempdir</span>(), <span class='st'>"test.idf"</span>))
 
@@ -1418,7 +1412,7 @@ newly added and modified objects at the bottom.</p></li>
 <span class='no'>idf</span>$<span class='fu'>save</span>(<span class='kw'>path</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='fu'>tempdir</span>(), <span class='st'>"test1.idf"</span>), <span class='kw'>copy_external</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># the path of this model will be changed to the saved path</span>
-<span class='no'>idf</span>$<span class='fu'>path</span>()</div><div class='output co'>#&gt; [1] "/tmp/Rtmp4ZdXQJ/test1.idf"</div><div class='input'>
+<span class='no'>idf</span>$<span class='fu'>path</span>()</div><div class='output co'>#&gt; [1] "/tmp/RtmpnXlMHt/test1.idf"</div><div class='input'>
 <span class='co'># ===== CLONE MODEL =====</span>
 <span class='co'># Idf object are modified in place and has reference semantic.</span>
 <span class='no'>idf_2</span> <span class='kw'>&lt;-</span> <span class='no'>idf</span>
@@ -1462,8 +1456,7 @@ newly added and modified objects at the bottom.</p></li>
 #&gt; [1] "Building_Name_Changed"
 #&gt; </div><div class='input'>
 # run the model
-</div><span class='co'># NOT RUN {</span>
-<span class='kw'>if</span> (<span class='fu'><a href='use_eplus.html'>is_avail_eplus</a></span>(<span class='fl'>8.8</span>)) {
+</div><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='use_eplus.html'>is_avail_eplus</a></span>(<span class='fl'>8.8</span>)) {
 
     <span class='co'># save the model to tempdir()</span>
     <span class='no'>idf</span>$<span class='fu'>save</span>(<span class='fu'>file.path</span>(<span class='fu'>tempdir</span>(), <span class='st'>"test_run.idf"</span>))
@@ -1499,8 +1492,133 @@ newly added and modified objects at the bottom.</p></li>
 
     <span class='co'># get simulation results</span>
     <span class='no'>job</span>$<span class='fu'>report_data</span>()
-}
-<span class='co'># }</span><div class='input'><span class='co'># print the text format of model</span>
+}</div><div class='output co'>#&gt; ── Info ────────────────────────────────────────────────────────────────────────
+#&gt; Adding object `Output:SQLite` and setting `Option Type` to `SimpleAndTabular`.
+#&gt; 
+#&gt; ── Info ────────────────────────────────────────────────────────────────────────
+#&gt; Replace the existing file located  at /tmp/RtmpnXlMHt/test_run.idf.
+#&gt; 
+#&gt; ExpandObjects Started.
+#&gt; No expanded file generated.
+#&gt; ExpandObjects Finished. Time:     0.000
+#&gt; EnergyPlus Starting
+#&gt; EnergyPlus, Version 8.8.0-7c3bbe4830, YMD=2018.08.17 19:14
+#&gt; Processing Data Dictionary
+#&gt; Processing Input File
+#&gt; Initializing Simulation
+#&gt; Reporting Surfaces
+#&gt; Beginning Primary Simulation
+#&gt; Initializing New Environment Parameters
+#&gt; Warming up {1}
+#&gt; Warming up {2}
+#&gt; Warming up {3}
+#&gt; Warming up {4}
+#&gt; Warming up {5}
+#&gt; Warming up {6}
+#&gt; Warming up {7}
+#&gt; Warming up {8}
+#&gt; Warming up {9}
+#&gt; Warming up {10}
+#&gt; Warming up {11}
+#&gt; Warming up {12}
+#&gt; Warming up {13}
+#&gt; Warming up {14}
+#&gt; Warming up {15}
+#&gt; Warming up {16}
+#&gt; Warming up {17}
+#&gt; Warming up {18}
+#&gt; Warming up {19}
+#&gt; Warming up {20}
+#&gt; Warming up {21}
+#&gt; Warming up {22}
+#&gt; Starting Simulation at 12/21 for DENVER CENTENNIAL  GOLDEN   N ANN HTG 99% CONDNS DB
+#&gt; Initializing New Environment Parameters
+#&gt; Warming up {1}
+#&gt; Warming up {2}
+#&gt; Warming up {3}
+#&gt; Warming up {4}
+#&gt; Warming up {5}
+#&gt; Warming up {6}
+#&gt; Warming up {7}
+#&gt; Warming up {8}
+#&gt; Warming up {9}
+#&gt; Warming up {10}
+#&gt; Warming up {11}
+#&gt; Warming up {12}
+#&gt; Warming up {13}
+#&gt; Warming up {14}
+#&gt; Warming up {15}
+#&gt; Warming up {16}
+#&gt; Starting Simulation at 07/21 for DENVER CENTENNIAL  GOLDEN   N ANN CLG 1% CONDNS DB=&gt;MWB
+#&gt; Initializing New Environment Parameters
+#&gt; Warming up {1}
+#&gt; Warming up {2}
+#&gt; Warming up {3}
+#&gt; Warming up {4}
+#&gt; Warming up {5}
+#&gt; Warming up {6}
+#&gt; Warming up {7}
+#&gt; Warming up {8}
+#&gt; Warming up {9}
+#&gt; Warming up {10}
+#&gt; Warming up {11}
+#&gt; Warming up {12}
+#&gt; Warming up {13}
+#&gt; Warming up {14}
+#&gt; Warming up {15}
+#&gt; Warming up {16}
+#&gt; Warming up {17}
+#&gt; Warming up {18}
+#&gt; Starting Simulation at 01/01 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=01/21
+#&gt; Continuing Simulation at 01/21 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=02/10
+#&gt; Continuing Simulation at 02/10 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=03/02
+#&gt; Continuing Simulation at 03/02 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=03/22
+#&gt; Continuing Simulation at 03/22 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=04/11
+#&gt; Continuing Simulation at 04/11 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=05/01
+#&gt; Continuing Simulation at 05/01 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=05/21
+#&gt; Continuing Simulation at 05/21 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=06/10
+#&gt; Continuing Simulation at 06/10 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=06/30
+#&gt; Continuing Simulation at 06/30 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=07/20
+#&gt; Continuing Simulation at 07/20 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=08/09
+#&gt; Continuing Simulation at 08/09 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=08/29
+#&gt; Continuing Simulation at 08/29 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=09/18
+#&gt; Continuing Simulation at 09/18 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=10/08
+#&gt; Continuing Simulation at 10/08 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=10/28
+#&gt; Continuing Simulation at 10/28 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=11/17
+#&gt; Continuing Simulation at 11/17 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=12/07
+#&gt; Continuing Simulation at 12/07 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=12/27
+#&gt; Continuing Simulation at 12/27 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Writing tabular output file results using comma format.
+#&gt; Writing tabular output file results using tab format.
+#&gt; Writing tabular output file results using text format.
+#&gt; Writing tabular output file results using HTML format.
+#&gt; Writing tabular output file results using XML format.
+#&gt; Writing final SQL reports
+#&gt;  ReadVarsESO program starting.
+#&gt;  ReadVars Run Time=00hr 00min  0.27sec
+#&gt;  ReadVarsESO program completed successfully.
+#&gt;  ReadVarsESO program starting.
+#&gt;  ReadVars Run Time=00hr 00min  0.12sec
+#&gt;  ReadVarsESO program completed successfully.
+#&gt; EnergyPlus Run Time=00hr 00min  2.68sec</div><div class='output co'>#&gt; <span class='message'>EnergyPlus is running in the background with PID `13973`.</span></div><div class='output co'>#&gt; <span class='error'>Error: The simulation of current Idf is still running (PID: 13973). Please set `force` to TRUE if you want to kill the running process and start a new simulation.</span></div><div class='input'><span class='co'># print the text format of model</span>
 <span class='no'>idf</span>$<span class='fu'>print</span>(<span class='kw'>plain</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; !-Generator eplusr
 #&gt; !-Option
 #&gt; !-NOTE: All comments with '!-' are ignored by the IDFEditor and are generated automatically.
@@ -2051,6 +2169,11 @@ newly added and modified objects at the bottom.</p></li>
 #&gt; Construction,
 #&gt;     R13A_WALL_11,            !- Name
 #&gt;     R13LAYER;                !- Outside Layer
+#&gt; 
+#&gt; !Comment for new object 1
+#&gt; !Another comment
+#&gt; Output:SQLite,
+#&gt;     SimpleAndTabular;        !- Option Type
 #&gt; 
 #&gt; Building,
 #&gt;     Building_Name_Changed,   !- Name
