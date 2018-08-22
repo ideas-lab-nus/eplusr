@@ -85,7 +85,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/hongyuanjia/eplusr">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -99,7 +104,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Use a specific EnergyPlus Input Data Dictionary (IDD) file</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/hongyuanjia/eplusr/blob/master/R/idd.R'><code>R/idd.R</code></a></small>
     <div class="hidden name"><code>use_idd.Rd</code></div>
     </div>
 
@@ -194,7 +199,7 @@ EnergyPlus IDD file</p></div>
 <span class='co'># check if specific version of Idd is available</span>
 <span class='fu'>is_avail_idd</span>(<span class='fl'>8.5</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
 <span class='co'># download latest IDD file from EnergyPlus GitHub repo</span>
-<span class='fu'>download_idd</span>(<span class='st'>"latest"</span>, <span class='fu'>tempdir</span>())</div><div class='output co'>#&gt; <span class='message'>EnergyPlus v8.9.0 IDD file `V8-9-0-Energy+.idd` has been successfully downloaded into /tmp/Rtmp2u5mxV.</span></div><div class='input'>
+<span class='fu'>download_idd</span>(<span class='st'>"latest"</span>, <span class='fu'>tempdir</span>())</div><div class='output co'>#&gt; <span class='message'>EnergyPlus v8.9.0 IDD file `V8-9-0-Energy+.idd` has been successfully downloaded into /tmp/Rtmpk7BApM.</span></div><div class='input'>
 <span class='co'># use specific version of Idd</span>
 <span class='co'># only works if EnergyPlus v8.8 has been found or Idd v8.8 exists</span>
 <span class='fu'>use_idd</span>(<span class='fl'>8.8</span>)</div><div class='output co'>#&gt; ── EnergyPlus Input Data Dictionary ────────────────────────────────────────────

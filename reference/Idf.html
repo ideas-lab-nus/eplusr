@@ -87,7 +87,12 @@ but with total different data structure under the hook." />
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/hongyuanjia/eplusr">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -101,7 +106,7 @@ but with total different data structure under the hook." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Read, modify, and run an EnergyPlus model</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/hongyuanjia/eplusr/blob/master/R/idf.R'><code>R/idf.R</code></a></small>
     <div class="hidden name"><code>Idf.Rd</code></div>
     </div>
 
@@ -1411,7 +1416,7 @@ newly added and modified objects at the bottom.</p></li>
 <span class='no'>idf</span>$<span class='fu'>save</span>(<span class='kw'>path</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='fu'>tempdir</span>(), <span class='st'>"test1.idf"</span>), <span class='kw'>copy_external</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># the path of this model will be changed to the saved path</span>
-<span class='no'>idf</span>$<span class='fu'>path</span>()</div><div class='output co'>#&gt; [1] "/tmp/Rtmp2u5mxV/test1.idf"</div><div class='input'>
+<span class='no'>idf</span>$<span class='fu'>path</span>()</div><div class='output co'>#&gt; [1] "/tmp/Rtmpk7BApM/test1.idf"</div><div class='input'>
 <span class='co'># ===== CLONE MODEL =====</span>
 <span class='co'># Idf object are modified in place and has reference semantic.</span>
 <span class='no'>idf_2</span> <span class='kw'>&lt;-</span> <span class='no'>idf</span>
@@ -1495,13 +1500,13 @@ newly added and modified objects at the bottom.</p></li>
 #&gt; Adding object `Output:SQLite` and setting  `Option Type` to `SimpleAndTabular`.
 #&gt; 
 #&gt; ── Info ────────────────────────────────────────────────────────────────────────
-#&gt; Replace the existing file located   at  /tmp/Rtmp2u5mxV/test_run.idf .
+#&gt; Replace the existing file located   at  /tmp/Rtmpk7BApM/test_run.idf .
 #&gt; 
 #&gt; ExpandObjects Started.
 #&gt; No expanded file generated.
 #&gt; ExpandObjects Finished. Time:     0.004
 #&gt; EnergyPlus Starting
-#&gt; EnergyPlus, Version 8.8.0-7c3bbe4830, YMD=2018.08.22 04:15
+#&gt; EnergyPlus, Version 8.8.0-7c3bbe4830, YMD=2018.08.22 05:07
 #&gt; Processing Data Dictionary
 #&gt; Processing Input File
 #&gt; Initializing Simulation
@@ -1612,35 +1617,22 @@ newly added and modified objects at the bottom.</p></li>
 #&gt; Writing tabular output file results using XML format.
 #&gt; Writing final SQL reports
 #&gt;  ReadVarsESO program starting.
-#&gt;  ReadVars Run Time=00hr 00min  0.28sec
+#&gt;  ReadVars Run Time=00hr 00min  0.26sec
 #&gt;  ReadVarsESO program completed successfully.
 #&gt;  ReadVarsESO program starting.
 #&gt;  ReadVars Run Time=00hr 00min  0.12sec
 #&gt;  ReadVarsESO program completed successfully.
-#&gt; EnergyPlus Run Time=00hr 00min  2.97sec
+#&gt; EnergyPlus Run Time=00hr 00min  2.16sec
 #&gt; 
 #&gt; ExpandObjects Started.
 #&gt; No expanded file generated.
 #&gt; ExpandObjects Finished. Time:     0.004
 #&gt; EnergyPlus Starting
-#&gt; EnergyPlus, Version 8.8.0-7c3bbe4830, YMD=2018.08.22 04:15
+#&gt; EnergyPlus, Version 8.8.0-7c3bbe4830, YMD=2018.08.22 05:07
 #&gt; Processing Data Dictionary
 #&gt; Processing Input File
 #&gt; **FATAL:The SQLite database failed to open.
-#&gt; EnergyPlus Run Time=00hr 00min  0.27sec
-#&gt; 
-#&gt; 
-#&gt; 
-#&gt; 
-#&gt; 
-#&gt; 
-#&gt; 
-#&gt; 
-#&gt; 
-#&gt; 
-#&gt; 
-#&gt; 
-#&gt; 
+#&gt; EnergyPlus Run Time=00hr 00min  0.23sec
 #&gt; </div><div class='output co'>#&gt; <span class='error'>Error in l_last_valid:.N: result would be too long a vector</span></div><div class='input'><span class='co'># print the text format of model</span>
 <span class='no'>idf</span>$<span class='fu'>print</span>(<span class='kw'>plain</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; !-Generator eplusr
 #&gt; !-Option
