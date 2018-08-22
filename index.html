@@ -179,9 +179,9 @@
 <a class="sourceLine" id="cb4-43" data-line-number="43">model<span class="op">$</span>Material_NoMass<span class="op">$</span>R13LAYER</a>
 <a class="sourceLine" id="cb4-44" data-line-number="44"><span class="co">#&gt; IdfObject &lt;&lt;[ID:12] `R13LAYER`&gt;&gt;`Material:NoMass`</span></a>
 <a class="sourceLine" id="cb4-45" data-line-number="45"><span class="co">#&gt; ──────────────────────────────── * VALUES * ───────────────────────────────</span></a>
-<a class="sourceLine" id="cb4-46" data-line-number="46"><span class="co">#&gt; ★1: R13LAYER,          !- Name</span></a>
-<a class="sourceLine" id="cb4-47" data-line-number="47"><span class="co">#&gt; ★2: Rough,             !- Roughness</span></a>
-<a class="sourceLine" id="cb4-48" data-line-number="48"><span class="co">#&gt; ★3: 2.290965,          !- Thermal Resistance {m2-K/W}</span></a>
+<a class="sourceLine" id="cb4-46" data-line-number="46"><span class="co">#&gt; ●1: R13LAYER,          !- Name</span></a>
+<a class="sourceLine" id="cb4-47" data-line-number="47"><span class="co">#&gt; ●2: Rough,             !- Roughness</span></a>
+<a class="sourceLine" id="cb4-48" data-line-number="48"><span class="co">#&gt; ●3: 2.290965,          !- Thermal Resistance {m2-K/W}</span></a>
 <a class="sourceLine" id="cb4-49" data-line-number="49"><span class="co">#&gt;  4: 0.9,               !- Thermal Absorptance</span></a>
 <a class="sourceLine" id="cb4-50" data-line-number="50"><span class="co">#&gt;  5: 0.75,              !- Solar Absorptance</span></a>
 <a class="sourceLine" id="cb4-51" data-line-number="51"><span class="co">#&gt;  6: 0.75;              !- Visible Absorptance</span></a>
@@ -201,10 +201,10 @@
 <a class="sourceLine" id="cb4-65" data-line-number="65"><span class="co">#&gt; IdfObject &lt;&lt;[ID:54] `run_period`&gt;&gt;`RunPeriod`</span></a>
 <a class="sourceLine" id="cb4-66" data-line-number="66"><span class="co">#&gt; ──────────────────────────────── * VALUES * ───────────────────────────────</span></a>
 <a class="sourceLine" id="cb4-67" data-line-number="67"><span class="co">#&gt;   1: run_period,        !- Name</span></a>
-<a class="sourceLine" id="cb4-68" data-line-number="68"><span class="co">#&gt; ★ 2: 3,                 !- Begin Month</span></a>
-<a class="sourceLine" id="cb4-69" data-line-number="69"><span class="co">#&gt; ★ 3: 1,                 !- Begin Day of Month</span></a>
-<a class="sourceLine" id="cb4-70" data-line-number="70"><span class="co">#&gt; ★ 4: 4,                 !- End Month</span></a>
-<a class="sourceLine" id="cb4-71" data-line-number="71"><span class="co">#&gt; ★ 5: 1,                 !- End Day of Month</span></a>
+<a class="sourceLine" id="cb4-68" data-line-number="68"><span class="co">#&gt; ● 2: 3,                 !- Begin Month</span></a>
+<a class="sourceLine" id="cb4-69" data-line-number="69"><span class="co">#&gt; ● 3: 1,                 !- Begin Day of Month</span></a>
+<a class="sourceLine" id="cb4-70" data-line-number="70"><span class="co">#&gt; ● 4: 4,                 !- End Month</span></a>
+<a class="sourceLine" id="cb4-71" data-line-number="71"><span class="co">#&gt; ● 5: 1,                 !- End Day of Month</span></a>
 <a class="sourceLine" id="cb4-72" data-line-number="72"><span class="co">#&gt;   6: UseWeatherFile,    !- Day of Week for Start Day</span></a>
 <a class="sourceLine" id="cb4-73" data-line-number="73"><span class="co">#&gt;   7: Yes,               !- Use Weather File Holidays and Special Days</span></a>
 <a class="sourceLine" id="cb4-74" data-line-number="74"><span class="co">#&gt;   8: Yes,               !- Use Weather File Daylight Saving Period</span></a>
@@ -226,16 +226,16 @@
 <a class="sourceLine" id="cb4-90" data-line-number="90">    <span class="dt">weather =</span> <span class="kw">file.path</span>(<span class="kw"><a href="reference/use_eplus.html">eplus_config</a></span>(<span class="fl">8.8</span>)<span class="op">$</span>dir, <span class="st">"WeatherData/USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw"</span>),</a>
 <a class="sourceLine" id="cb4-91" data-line-number="91">    <span class="dt">dir =</span> <span class="ot">NULL</span>)</a>
 <a class="sourceLine" id="cb4-92" data-line-number="92"><span class="co">#&gt; ── Info ───────────────────────────────────────────────────────────────────</span></a>
-<a class="sourceLine" id="cb4-93" data-line-number="93"><span class="co">#&gt; Adding object `Output:SQLite` and setting  `Option Type` to `SimpleAndTabular`.</span></a>
+<a class="sourceLine" id="cb4-93" data-line-number="93"><span class="co">#&gt; Adding object `Output:SQLite` and setting `Option Type` to `SimpleAndTabular`.</span></a>
 <a class="sourceLine" id="cb4-94" data-line-number="94"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb4-95" data-line-number="95"><span class="co">#&gt; ── Info ───────────────────────────────────────────────────────────────────</span></a>
-<a class="sourceLine" id="cb4-96" data-line-number="96"><span class="co">#&gt; Replace the existing file located   at  /tmp/RtmpB4Rszi/model.idf .</span></a>
+<a class="sourceLine" id="cb4-96" data-line-number="96"><span class="co">#&gt; Replace the existing file located  at /tmp/Rtmpn0kAN6/model.idf.</span></a>
 <a class="sourceLine" id="cb4-97" data-line-number="97"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb4-98" data-line-number="98"><span class="co">#&gt; ExpandObjects Started.</span></a>
 <a class="sourceLine" id="cb4-99" data-line-number="99"><span class="co">#&gt; No expanded file generated.</span></a>
 <a class="sourceLine" id="cb4-100" data-line-number="100"><span class="co">#&gt; ExpandObjects Finished. Time:     0.000</span></a>
 <a class="sourceLine" id="cb4-101" data-line-number="101"><span class="co">#&gt; EnergyPlus Starting</span></a>
-<a class="sourceLine" id="cb4-102" data-line-number="102"><span class="co">#&gt; EnergyPlus, Version 8.8.0-7c3bbe4830, YMD=2018.08.22 05:06</span></a>
+<a class="sourceLine" id="cb4-102" data-line-number="102"><span class="co">#&gt; EnergyPlus, Version 8.8.0-7c3bbe4830, YMD=2018.08.22 14:48</span></a>
 <a class="sourceLine" id="cb4-103" data-line-number="103"><span class="co">#&gt; Processing Data Dictionary</span></a>
 <a class="sourceLine" id="cb4-104" data-line-number="104"><span class="co">#&gt; Processing Input File</span></a>
 <a class="sourceLine" id="cb4-105" data-line-number="105"><span class="co">#&gt; Initializing Simulation</span></a>
