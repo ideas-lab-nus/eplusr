@@ -62,7 +62,7 @@ run EnergyPlus model with different options." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eplusr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.4</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.9.0</span>
       </span>
     </div>
 
@@ -111,31 +111,35 @@ run EnergyPlus model with different options.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>run_idf</span>(<span class='no'>eplus</span>, <span class='no'>model</span>, <span class='no'>weather</span>, <span class='no'>output_dir</span>, <span class='kw'>design_day</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>annual</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>expand_obj</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>echo</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+    <pre class="usage"><span class='fu'>run_idf</span>(<span class='no'>model</span>, <span class='no'>weather</span>, <span class='no'>output_dir</span>, <span class='kw'>design_day</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>annual</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>expand_obj</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>wait</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>echo</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>eplus</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>run_multi</span>(<span class='no'>eplus</span>, <span class='no'>model</span>, <span class='no'>weather</span>, <span class='no'>output_dir</span>, <span class='kw'>design_day</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>annual</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>parallel_backend</span> <span class='kw'>=</span> <span class='kw pkg'>future</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/future/topics/multiprocess'>multiprocess</a></span>)</pre>
+<span class='fu'>run_multi</span>(<span class='no'>model</span>, <span class='no'>weather</span>, <span class='no'>output_dir</span>, <span class='kw'>design_day</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>annual</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>wait</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>echo</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>eplus</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>eplus</th>
-      <td><p>An acceptable input of <code><a href='use_eplus.html'>use_eplus()</a></code> and <code><a href='use_eplus.html'>eplus_config()</a></code>.</p></td>
-    </tr>
-    <tr>
       <th>model</th>
-      <td><p>A path of an EnergyPlus IDF or IMF file.</p></td>
+      <td><p>A path (for <code>run_idf()</code>) or a vector of paths (for
+<code>run_multi()</code>) of EnergyPlus IDF or IMF files.</p></td>
     </tr>
     <tr>
       <th>weather</th>
-      <td><p>A path of an EnergyPlus EPW weather file.</p></td>
+      <td><p>A path (for <code>run_idf()</code>) or a vector of paths (for
+<code>run_multi()</code>) of EnergyPlus EPW weather files. For <code>run_multi()</code>,
+<code>weather</code> can also be a single EPW file path. In this case, that weather
+will be used for all simulations; otherwise, <code>model</code> and <code>weather</code> should
+have the same length.</p></td>
     </tr>
     <tr>
       <th>output_dir</th>
-      <td><p>Output directory path. If NULL, the directory of input
-model is used.</p></td>
+      <td><p>Output directory path (for <code>rum_idf()</code>) or paths (for
+<code>run_mult()</code>). If NULL, the directory of input model is used. For
+<code>run_multi()</code>, <code>output_dir</code>, if not <code>NULL</code>, should have the same length
+as <code>model</code>. Any duplicated combination of <code>model</code> and <code>output_dir</code> is
+prohibited.</p></td>
     </tr>
     <tr>
       <th>design_day</th>
@@ -147,33 +151,87 @@ model is used.</p></td>
     </tr>
     <tr>
       <th>expand_obj</th>
-      <td><p>Where to run ExpandObject preprocessor before simulation.
+      <td><p>Whether to run ExpandObject preprocessor before simulation.
 Default: <code>TRUE</code>.</p></td>
     </tr>
     <tr>
-      <th>echo</th>
-      <td><p>Only applicable to <code>run_idf</code>. If <code>TRUE</code>, show EnergyPlus
-simulation process information to the console. If <code>FALSE</code>, which is default, a
-<a href='http://www.rdocumentation.org/packages/processx/topics/process'>processx::process</a> object is returned. Default: <code>TRUE</code>.</p></td>
+      <th>wait</th>
+      <td><p>If <code>TRUE</code>, R will hang on and wait all EnergyPlus simulations
+finish. If <code>FALSE</code>, all EnergyPlus simulations are run in the background.
+and a <a href='http://www.rdocumentation.org/packages/processx/topics/process'>processx::process</a> object is returned. Note that, if <code>FALSE</code>, R is
+<em>not blocked</em> even when <code>echo</code> is <code>TRUE</code>. Default: <code>TRUE</code>.</p></td>
     </tr>
     <tr>
-      <th>parallel_backend</th>
-      <td><p>Acceptable input for <code><a href='http://www.rdocumentation.org/packages/future/topics/plan'>future::plan()</a></code>. Default:
-<code><a href='http://www.rdocumentation.org/packages/future/topics/multiprocess'>future::multiprocess</a></code>, which tries to run all models in parallel.</p></td>
+      <th>echo</th>
+      <td><p>Whether to show standard output and error from EnergyPlus
+command line interface for <code>run_idf()</code> and simulation status for
+<code>run_multi()</code>.Default: <code>TRUE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>eplus</th>
+      <td><p>An acceptable input (for <code>run_idf()</code>) or inputs (for
+<code>run_multi()</code>) of <code><a href='use_eplus.html'>use_eplus()</a></code> and <code><a href='use_eplus.html'>eplus_config()</a></code>. If
+<code>NULL</code>, which is the default, the version of EnergyPlus to use is
+deterimined by the version of input model. For <code>run_multi()</code>, <code>eplus</code>, if not
+<code>NULL</code>, should have the same length as <code>model</code>.</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A list for <code>run_idf()</code>. For <code>rum_multi()</code>, a
+<a href='http://www.rdocumentation.org/packages/data.table/topics/data.table'>data.table</a> if <code>wait</code> is <code>TRUE</code> or a
+<a href='http://www.rdocumentation.org/packages/processx/topics/process'>process</a> if <code>wait</code> is <code>FALSE</code>.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><code>run_multi()</code> provides the functionality of running multiple models in
 parallel.</p>
-<p>Behind the scene, <code>run_multi()</code> uses the
-<a href='https://cran.r-project.org/package=furrr'>furrr</a> package which provides
-mapping functions in parallel using
-<a href='https://cran.r-project.org/package=future'>future</a> package.</p>
-<p>It is suggested to run simulations using <a href='job.html'>EplusJob</a> class, which
-provides much more detailed controls on the simulation and also methods to
-extract simulation output.</p>
+<p><a href='https://cran.r-project.org/package=later'>later</a> package is used to poll the
+standard output and error of background EnergyPlus process or background
+R process that handles parallel simulations. The print interval is set to
+0.5 sec.</p>
+<p>For <code>run_idf()</code>, a named list will be returned:</p><ul>
+<li><p><code>idf</code>: The path of IDF file</p></li>
+<li><p><code>epw</code>: The path of EPW file</p></li>
+<li><p><code>exit_status</code>: The exit code of the process if it has finished and NULL
+otherwise. Always being <code>NULL</code> if <code>wait</code> is FALSE, but you can manually
+get the exit code using the process object, i.e.
+<code>process$get_exit_status()</code> after simulation <em>completed</em>.</p></li>
+<li><p><code>start_time</code>: When the EnergyPlus process started.</p></li>
+<li><p><code>end_time</code>: When the EnergyPlus process stopped. All being <code>NULL</code> if
+<code>wait</code> is <code>FALSE</code>, but you can manually check EnergyPlus <code>stdout</code> to get
+the simulation time</p></li>
+<li><p><code>output_dir</code>: The simulation output directory</p></li>
+<li><p><code>energyplus</code>: The path of EnergyPlus executable</p></li>
+<li><p><code>stdout</code>: All standard output from EnergyPlus. Always being <code>NULL</code> if
+<code>wait</code> is <code>FALSE</code>, but you can manually get all standard output using
+<code>process$read_all_output_lines()</code>.</p></li>
+<li><p><code>stderr</code>: All standard error from EnergyPlus. Always being <code>NULL</code> if
+<code>wait</code> is <code>FALSE</code>, but you can manually get all standard output using
+<code>process$read_all_output_lines()</code>.</p></li>
+<li><p><code>process</code>: A <a href='http://www.rdocumentation.org/packages/processx/topics/process'>processx::process</a> object of current EnergyPlus simulation</p></li>
+</ul>
+    <p>For <code>run_multi()</code>, if <code>wait</code> is <code>TRUE</code>, a data.table contains all data
+(excluding <code>process</code>) with same column names as above, and also another
+two columns:</p><ul>
+<li><p><code>index</code>: The index of simulation</p></li>
+<li><p><code>status</code>: The status of simulation status. Should be one of below:</p><ul>
+<li><p><code>"completed"</code>: the simulation job is completed. This only indicates
+that the job has been run before. But the job can end with error.
+Please check <code>exit_status</code> to determine whether EnergyPlus ran
+successfully</p></li>
+<li><p><code>"terminated"</code>: the simulation job started but was terminated</p></li>
+<li><p><code>"cancelled"</code>: the simulation job was cancelled</p></li>
+</ul></li>
+</ul>
+    <p>For <code>run_multi()</code>, if <code>wait</code> is <code>FALSE</code>, a <a href='http://www.rdocumentation.org/packages/callr/topics/r_bg'>r_process</a>
+object of background R process which handles all simulation jobs is
+returned. You can check if the jobs are completed using <code>$is_alive()</code> and
+get the final data.table using <code>$get_result()</code>.</p>
+<p>It is suggested to run simulations using <a href='EplusJob.html'>EplusJob</a> class and
+<a href='ParametricJob.html'>ParametricJob</a> class, which provide much more detailed controls
+on the simulation and also methods to extract simulation outputs.</p>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -181,7 +239,7 @@ extract simulation output.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='job.html'>EplusJob</a> class and <a href='param.html'>ParametricJob</a> class which provide
+    <div class='dont-index'><p><a href='EplusJob.html'>EplusJob</a> class and <a href='ParametricJob.html'>ParametricJob</a> class which provide
 a more friendly interface to run EnergyPlus simulations and collect outputs.</p></div>
     
 
@@ -196,7 +254,7 @@ a more friendly interface to run EnergyPlus simulations and collect outputs.</p>
         <span class='st'>"USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw"</span>
     )
 
-    <span class='fu'>run_idf</span>(<span class='fl'>8.8</span>, <span class='no'>idf_path</span>, <span class='no'>epw_path</span>, <span class='kw'>output_dir</span> <span class='kw'>=</span> <span class='fu'>tempdir</span>())
+    <span class='fu'>run_idf</span>(<span class='no'>idf_path</span>, <span class='no'>epw_path</span>, <span class='kw'>output_dir</span> <span class='kw'>=</span> <span class='fu'>tempdir</span>())
 
     <span class='co'># run multiple model in parallel</span>
     <span class='no'>idf_paths</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(<span class='fu'><a href='use_eplus.html'>eplus_config</a></span>(<span class='fl'>8.8</span>)$<span class='no'>dir</span>, <span class='st'>"ExampleFiles"</span>,
@@ -204,12 +262,12 @@ a more friendly interface to run EnergyPlus simulations and collect outputs.</p>
     )
     <span class='no'>epw_paths</span> <span class='kw'>&lt;-</span> <span class='fu'>rep</span>(<span class='no'>epw_path</span>, <span class='kw'>times</span> <span class='kw'>=</span> <span class='fl'>2L</span>)
     <span class='no'>output_dirs</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(<span class='fu'>tempdir</span>(), <span class='kw pkg'>tools</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tools/topics/fileutils'>file_path_sans_ext</a></span>(<span class='fu'>basename</span>(<span class='no'>idf_paths</span>)))
-    <span class='fu'>run_multi</span>(<span class='fl'>8.8</span>, <span class='no'>idf_paths</span>, <span class='no'>epw_paths</span>, <span class='kw'>output_dir</span> <span class='kw'>=</span> <span class='no'>output_dirs</span>)
+    <span class='fu'>run_multi</span>(<span class='no'>idf_paths</span>, <span class='no'>epw_paths</span>, <span class='kw'>output_dir</span> <span class='kw'>=</span> <span class='no'>output_dirs</span>)
 }</div><div class='output co'>#&gt; ExpandObjects Started.
 #&gt; No expanded file generated.
-#&gt; ExpandObjects Finished. Time:     0.000
+#&gt; ExpandObjects Finished. Time:     0.004
 #&gt; EnergyPlus Starting
-#&gt; EnergyPlus, Version 8.8.0-7c3bbe4830, YMD=2018.08.17 19:14
+#&gt; EnergyPlus, Version 8.8.0-7c3bbe4830, YMD=2018.08.22 02:01
 #&gt; Processing Data Dictionary
 #&gt; Processing Input File
 #&gt; Initializing Simulation
@@ -320,47 +378,41 @@ a more friendly interface to run EnergyPlus simulations and collect outputs.</p>
 #&gt; Writing tabular output file results using XML format.
 #&gt; Writing final SQL reports
 #&gt;  ReadVarsESO program starting.
-#&gt;  ReadVars Run Time=00hr 00min  0.27sec
+#&gt;  ReadVars Run Time=00hr 00min  0.28sec
 #&gt;  ReadVarsESO program completed successfully.
 #&gt;  ReadVarsESO program starting.
 #&gt;  ReadVars Run Time=00hr 00min  0.12sec
 #&gt;  ReadVarsESO program completed successfully.
-#&gt; EnergyPlus Run Time=00hr 00min  2.50sec
-#&gt;  Progress:                                                                  100% Progress:                                                                  100% Progress:                                                                  100% Progress:                                                                  100% Progress:                                                                  100% Progress:                                                                  100% Progress:                                                                  100% Progress:                                                                  100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ────────────────────────────────                                 100% Progress: ──────────────────────────────────────────────────────────────── 100%
-#&gt; </div><div class='output co'>#&gt; [[1]]
-#&gt; [[1]]$status
-#&gt; [1] 0
-#&gt; 
-#&gt; [[1]]$stdout
-#&gt; [1] "ExpandObjects Started.\nNo expanded file generated.\nExpandObjects Finished. Time:     0.004\nEnergyPlus Starting\nEnergyPlus, Version 8.8.0-7c3bbe4830, YMD=2018.08.17 19:14\nProcessing Data Dictionary\nProcessing Input File\nInitializing Simulation\nReporting Surfaces\nBeginning Primary Simulation\nInitializing New Environment Parameters\nWarming up {1}\nWarming up {2}\nWarming up {3}\nWarming up {4}\nWarming up {5}\nWarming up {6}\nWarming up {7}\nWarming up {8}\nWarming up {9}\nWarming up {10}\nWarming up {11}\nWarming up {12}\nWarming up {13}\nWarming up {14}\nWarming up {15}\nWarming up {16}\nWarming up {17}\nWarming up {18}\nWarming up {19}\nWarming up {20}\nWarming up {21}\nWarming up {22}\nStarting Simulation at 12/21 for DENVER CENTENNIAL  GOLDEN   N ANN HTG 99% CONDNS DB\nInitializing New Environment Parameters\nWarming up {1}\nWarming up {2}\nWarming up {3}\nWarming up {4}\nWarming up {5}\nWarming up {6}\nWarming up {7}\nWarming up {8}\nWarming up {9}\nWarming up {10}\nWarming up {11}\nWarming up {12}\nWarming up {13}\nWarming up {14}\nWarming up {15}\nWarming up {16}\nStarting Simulation at 07/21 for DENVER CENTENNIAL  GOLDEN   N ANN CLG 1% CONDNS DB=&gt;MWB\nInitializing New Environment Parameters\nWarming up {1}\nWarming up {2}\nWarming up {3}\nWarming up {4}\nWarming up {5}\nWarming up {6}\nWarming up {7}\nWarming up {8}\nWarming up {9}\nWarming up {10}\nWarming up {11}\nWarming up {12}\nWarming up {13}\nWarming up {14}\nWarming up {15}\nWarming up {16}\nWarming up {17}\nWarming up {18}\nStarting Simulation at 01/01 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=01/21\nContinuing Simulation at 01/21 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=02/10\nContinuing Simulation at 02/10 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=03/02\nContinuing Simulation at 03/02 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=03/22\nContinuing Simulation at 03/22 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=04/11\nContinuing Simulation at 04/11 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=05/01\nContinuing Simulation at 05/01 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=05/21\nContinuing Simulation at 05/21 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=06/10\nContinuing Simulation at 06/10 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=06/30\nContinuing Simulation at 06/30 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=07/20\nContinuing Simulation at 07/20 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=08/09\nContinuing Simulation at 08/09 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=08/29\nContinuing Simulation at 08/29 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=09/18\nContinuing Simulation at 09/18 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=10/08\nContinuing Simulation at 10/08 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=10/28\nContinuing Simulation at 10/28 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=11/17\nContinuing Simulation at 11/17 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=12/07\nContinuing Simulation at 12/07 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nUpdating Shadowing Calculations, Start Date=12/27\nContinuing Simulation at 12/27 for San Francisco Intl Ap CA USA TMY3 WMO#=724940\nWriting tabular output file results using comma format.\nWriting tabular output file results using tab format.\nWriting tabular output file results using text format.\nWriting tabular output file results using HTML format.\nWriting tabular output file results using XML format.\nWriting final SQL reports\n ReadVarsESO program starting.\n ReadVars Run Time=00hr 00min  0.48sec\n ReadVarsESO program completed successfully.\n ReadVarsESO program starting.\n ReadVars Run Time=00hr 00min  0.20sec\n ReadVarsESO program completed successfully.\nEnergyPlus Run Time=00hr 00min  3.95sec\n"
-#&gt; 
-#&gt; [[1]]$stderr
-#&gt; [1] ""
-#&gt; 
-#&gt; [[1]]$timeout
-#&gt; [1] FALSE
-#&gt; 
-#&gt; 
-#&gt; [[2]]
-#&gt; [[2]]$status
-#&gt; [1] 0
-#&gt; 
-#&gt; [[2]]$stdout
-#&gt; [1] "ExpandObjects Started.\nNo expanded file generated.\nExpandObjects Finished. Time:     0.004\nEnergyPlus Starting\nEnergyPlus, Version 8.8.0-7c3bbe4830, YMD=2018.08.17 19:14\nProcessing Data Dictionary\nProcessing Input File\nInitializing Simulation\nReporting Surfaces\nBeginning Primary Simulation\nInitializing New Environment Parameters\nWarming up {1}\nWarming up {2}\nWarming up {3}\nWarming up {4}\nWarming up {5}\nWarming up {6}\nWarming up {7}\nWarming up {8}\nWarming up {9}\nWarming up {10}\nStarting Simulation at 01/14 for JAN\nWriting tabular output file results using comma format.\nWriting tabular output file results using tab format.\nWriting tabular output file results using text format.\nWriting tabular output file results using HTML format.\nWriting tabular output file results using XML format.\nWriting final SQL reports\n ReadVarsESO program starting.\n ReadVars Run Time=00hr 00min  0.03sec\n ReadVarsESO program completed successfully.\n ReadVarsESO program starting.\n ReadVars Run Time=00hr 00min  0.02sec\n ReadVarsESO program completed successfully.\nEnergyPlus Run Time=00hr 00min  7.27sec\n"
-#&gt; 
-#&gt; [[2]]$stderr
-#&gt; [1] ""
-#&gt; 
-#&gt; [[2]]$timeout
-#&gt; [1] FALSE
-#&gt; 
-#&gt; </div></pre>
+#&gt; EnergyPlus Run Time=00hr 00min  2.68sec
+#&gt; </div><div class='output co'>#&gt; <span class='message'>1|RUNNING    --&gt; [IDF]`1ZoneUncontrolled.idf` + [EPW]`USA_CA_San.Francisco....</span></div><div class='output co'>#&gt; <span class='message'>2|RUNNING    --&gt; [IDF]`1ZoneUncontrolledFourAlgorithms.idf` + [EPW]`USA_CA_...</span></div><div class='output co'>#&gt; <span class='message'>1|COMPLETED  --&gt; [IDF]`1ZoneUncontrolled.idf` + [EPW]`USA_CA_San.Francisco....</span></div><div class='output co'>#&gt; <span class='message'>2|COMPLETED  --&gt; [IDF]`1ZoneUncontrolledFourAlgorithms.idf` + [EPW]`USA_CA_...</span></div><div class='output co'>#&gt;                                                                             idf
+#&gt; 1:               /usr/local/EnergyPlus-8-8-0/ExampleFiles/1ZoneUncontrolled.idf
+#&gt; 2: /usr/local/EnergyPlus-8-8-0/ExampleFiles/1ZoneUncontrolledFourAlgorithms.idf
+#&gt;                                         output_dir
+#&gt; 1:               /tmp/RtmpgnGl1P/1ZoneUncontrolled
+#&gt; 2: /tmp/RtmpgnGl1P/1ZoneUncontrolledFourAlgorithms
+#&gt;                                                                                     epw
+#&gt; 1: /usr/local/EnergyPlus-8-8-0/WeatherData/USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw
+#&gt; 2: /usr/local/EnergyPlus-8-8-0/WeatherData/USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw
+#&gt;                                      energyplus index annual design_day
+#&gt; 1: /usr/local/EnergyPlus-8-8-0/energyplus-8.8.0     1  FALSE      FALSE
+#&gt; 2: /usr/local/EnergyPlus-8-8-0/energyplus-8.8.0     2  FALSE      FALSE
+#&gt;       status index_str   process
+#&gt; 1: completed         1 &lt;process&gt;
+#&gt; 2: completed         2 &lt;process&gt;
+#&gt;                                                                                                                                                                                                      stdout
+#&gt; 1: ExpandObjects Started.,No expanded file generated.,ExpandObjects Finished. Time:     0.004,EnergyPlus Starting,EnergyPlus, Version 8.8.0-7c3bbe4830, YMD=2018.08.22 02:01,Processing Data Dictionary,...
+#&gt; 2: ExpandObjects Started.,No expanded file generated.,ExpandObjects Finished. Time:     0.004,EnergyPlus Starting,EnergyPlus, Version 8.8.0-7c3bbe4830, YMD=2018.08.22 02:01,Processing Data Dictionary,...
+#&gt;    stderr exit_status          start_time            end_time
+#&gt; 1:                  0 2018-08-22 02:01:16 2018-08-22 02:01:25
+#&gt; 2:                  0 2018-08-22 02:01:16 2018-08-22 02:01:27</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
       <li><a href="#details">Details</a></li>
 
       <li><a href="#references">References</a></li>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Run EnergyPlus Simulation and Collect Outputs — job • eplusr</title>
+<title>Run EnergyPlus Simulation and Collect Outputs — EplusJob • eplusr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,7 +30,7 @@
 
 
 
-<meta property="og:title" content="Run EnergyPlus Simulation and Collect Outputs — job" />
+<meta property="og:title" content="Run EnergyPlus Simulation and Collect Outputs — EplusJob" />
 
 <meta property="og:description" content="EplusJob class wraps the EnergyPlus command line interface and provides
 methods to extract simulation outputs." />
@@ -101,7 +101,7 @@ methods to extract simulation outputs." />
     <div class="page-header">
     <h1>Run EnergyPlus Simulation and Collect Outputs</h1>
     
-    <div class="hidden name"><code>job.Rd</code></div>
+    <div class="hidden name"><code>EplusJob.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -125,7 +125,7 @@ Table"</em> in EnergyPlus <em>"Output Details and Examples"</em> documentation.<
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>NOTE</h2>
 
     
-    <p>When using <code>$run()</code> in <a href='idf.html'>Idf</a> class, which internally creates an
+    <p>When using <code>$run()</code> in <a href='Idf.html'>Idf</a> class, which internally creates an
 <code>EplusJob</code> object and calls its <code>$run()</code> method, an object in
 <code>Output:SQLite</code> with <code>Option Type</code> value of <code>SimpleAndTabular</code> will be
 automatically created if it does not exists.</p>
@@ -134,7 +134,7 @@ parsed but directly pass its path to EnergyPlus. Thus, that process of
 handling <code>Output:SQLite</code> class is not performed. If you want to ensure
 that the output collection functionality in <code>EplusJob</code> class works
 successfully, it is recommended to first read that IDF file using
-<code><a href='read_idf.html'>read_idf()</a></code> and then use <code>$run()</code> method in <a href='idf.html'>Idf</a> class by doing
+<code><a href='read_idf.html'>read_idf()</a></code> and then use <code>$run()</code> method in <a href='Idf.html'>Idf</a> class by doing
 <code>idf$run()</code>.</p>
     
     <h2 class="hasAnchor" id="usage"><a class="anchor" href="#usage"></a>Usage</h2>
@@ -164,10 +164,10 @@ job$print()
 
     <pre>job$path(type = c("all", "idf", "epw"))
 </pre>
-    <p><code>$path()</code> returns the path of idf or epw of current job.</p>
+    <p><code>$path()</code> returns the path of IDF or EPW of current job.</p>
 <p><strong>Arguments</strong></p><ul>
-<li><p><code>type</code>: If <code>"all"</code>, both the idf path and epw path are returned. If
-<code>"idf"</code>, only idf path is returned. If <code>"epw"</code>, only epw path is
+<li><p><code>type</code>: If <code>"all"</code>, both the IDF path and EPW path are returned. If
+<code>"idf"</code>, only IDF path is returned. If <code>"epw"</code>, only EPW path is
 returned.  Default: <code>"all"</code>.</p></li>
 </ul>
     
@@ -250,12 +250,11 @@ whenever <code>$print()</code> is called.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='param.html'>ParametricJob class</a> for EnergyPlus parametric simulations.</p></div>
+    <div class='dont-index'><p><a href='ParametricJob.html'>ParametricJob</a> class for EnergyPlus parametric simulations.</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='kw'>if</span> (<span class='fu'><a href='use_eplus.html'>is_avail_eplus</a></span>(<span class='fl'>8.8</span>)) {
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='use_eplus.html'>is_avail_eplus</a></span>(<span class='fl'>8.8</span>)) {
     <span class='no'>idf_name</span> <span class='kw'>&lt;-</span> <span class='st'>"1ZoneUncontrolled.idf"</span>
     <span class='no'>epw_name</span> <span class='kw'>&lt;-</span>  <span class='st'>"USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw"</span>
 
@@ -330,8 +329,128 @@ whenever <code>$print()</code> is called.</p>
 
     <span class='co'># get all tabular data</span>
     <span class='fu'>str</span>(<span class='no'>job</span>$<span class='fu'>tabular_data</span>())
-}
-<span class='co'># }</span></pre>
+}</div><div class='output co'>#&gt; ExpandObjects Started.
+#&gt; No expanded file generated.
+#&gt; ExpandObjects Finished. Time:     0.000
+#&gt; EnergyPlus Starting
+#&gt; EnergyPlus, Version 8.8.0-7c3bbe4830, YMD=2018.08.22 02:00
+#&gt; Processing Data Dictionary
+#&gt; Processing Input File
+#&gt; Initializing Simulation
+#&gt; Reporting Surfaces
+#&gt; Beginning Primary Simulation
+#&gt; Initializing New Environment Parameters
+#&gt; Warming up {1}
+#&gt; Warming up {2}
+#&gt; Warming up {3}
+#&gt; Warming up {4}
+#&gt; Warming up {5}
+#&gt; Warming up {6}
+#&gt; Warming up {7}
+#&gt; Warming up {8}
+#&gt; Warming up {9}
+#&gt; Warming up {10}
+#&gt; Warming up {11}
+#&gt; Warming up {12}
+#&gt; Warming up {13}
+#&gt; Warming up {14}
+#&gt; Warming up {15}
+#&gt; Warming up {16}
+#&gt; Warming up {17}
+#&gt; Warming up {18}
+#&gt; Warming up {19}
+#&gt; Warming up {20}
+#&gt; Warming up {21}
+#&gt; Warming up {22}
+#&gt; Starting Simulation at 12/21 for DENVER CENTENNIAL  GOLDEN   N ANN HTG 99% CONDNS DB
+#&gt; Initializing New Environment Parameters
+#&gt; Warming up {1}
+#&gt; Warming up {2}
+#&gt; Warming up {3}
+#&gt; Warming up {4}
+#&gt; Warming up {5}
+#&gt; Warming up {6}
+#&gt; Warming up {7}
+#&gt; Warming up {8}
+#&gt; Warming up {9}
+#&gt; Warming up {10}
+#&gt; Warming up {11}
+#&gt; Warming up {12}
+#&gt; Warming up {13}
+#&gt; Warming up {14}
+#&gt; Warming up {15}
+#&gt; Warming up {16}
+#&gt; Starting Simulation at 07/21 for DENVER CENTENNIAL  GOLDEN   N ANN CLG 1% CONDNS DB=&gt;MWB
+#&gt; Initializing New Environment Parameters
+#&gt; Warming up {1}
+#&gt; Warming up {2}
+#&gt; Warming up {3}
+#&gt; Warming up {4}
+#&gt; Warming up {5}
+#&gt; Warming up {6}
+#&gt; Warming up {7}
+#&gt; Warming up {8}
+#&gt; Warming up {9}
+#&gt; Warming up {10}
+#&gt; Warming up {11}
+#&gt; Warming up {12}
+#&gt; Warming up {13}
+#&gt; Warming up {14}
+#&gt; Warming up {15}
+#&gt; Warming up {16}
+#&gt; Warming up {17}
+#&gt; Warming up {18}
+#&gt; Starting Simulation at 01/01 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=01/21
+#&gt; Continuing Simulation at 01/21 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=02/10
+#&gt; Continuing Simulation at 02/10 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=03/02
+#&gt; Continuing Simulation at 03/02 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=03/22
+#&gt; Continuing Simulation at 03/22 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=04/11
+#&gt; Continuing Simulation at 04/11 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=05/01
+#&gt; Continuing Simulation at 05/01 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=05/21
+#&gt; Continuing Simulation at 05/21 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=06/10
+#&gt; Continuing Simulation at 06/10 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=06/30
+#&gt; Continuing Simulation at 06/30 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=07/20
+#&gt; Continuing Simulation at 07/20 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=08/09
+#&gt; Continuing Simulation at 08/09 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=08/29
+#&gt; Continuing Simulation at 08/29 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=09/18
+#&gt; Continuing Simulation at 09/18 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=10/08
+#&gt; Continuing Simulation at 10/08 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=10/28
+#&gt; Continuing Simulation at 10/28 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=11/17
+#&gt; Continuing Simulation at 11/17 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=12/07
+#&gt; Continuing Simulation at 12/07 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Updating Shadowing Calculations, Start Date=12/27
+#&gt; Continuing Simulation at 12/27 for San Francisco Intl Ap CA USA TMY3 WMO#=724940
+#&gt; Writing tabular output file results using comma format.
+#&gt; Writing tabular output file results using tab format.
+#&gt; Writing tabular output file results using text format.
+#&gt; Writing tabular output file results using HTML format.
+#&gt; Writing tabular output file results using XML format.
+#&gt; Writing final SQL reports
+#&gt;  ReadVarsESO program starting.
+#&gt;  ReadVars Run Time=00hr 00min  0.27sec
+#&gt;  ReadVarsESO program completed successfully.
+#&gt;  ReadVarsESO program starting.
+#&gt;  ReadVars Run Time=00hr 00min  0.12sec
+#&gt;  ReadVarsESO program completed successfully.
+#&gt; EnergyPlus Run Time=00hr 00min  2.74sec
+#&gt; </div><div class='output co'>#&gt; <span class='error'>Error: Path '/tmp/RtmpgnGl1P/1ZoneUncontrolled.exe' does not exist</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

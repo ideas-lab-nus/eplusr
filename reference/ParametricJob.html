@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create and Run Parametric Analysis, and Collect Results — param • eplusr</title>
+<title>Create and Run Parametric Analysis, and Collect Results — ParametricJob • eplusr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,7 +30,7 @@
 
 
 
-<meta property="og:title" content="Create and Run Parametric Analysis, and Collect Results — param" />
+<meta property="og:title" content="Create and Run Parametric Analysis, and Collect Results — ParametricJob" />
 
 <meta property="og:description" content="ParametricJob class provides a prototype of conducting parametric analysis
 of EnergyPlus simulations." />
@@ -101,7 +101,7 @@ of EnergyPlus simulations." />
     <div class="page-header">
     <h1>Create and Run Parametric Analysis, and Collect Results</h1>
     
-    <div class="hidden name"><code>param.Rd</code></div>
+    <div class="hidden name"><code>ParametricJob.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -116,9 +116,9 @@ of EnergyPlus simulations.</p>
 
     <p>Basically, it is a collection of multiple <code>EplusJob</code> objects. However, the
 model is first parsed and the Idf object is stored internally, instead of
-storing only the path of Idf in <code><a href='job.html'>EplusJob</a></code> class. Also, an object
+storing only the path of Idf in <a href='EplusJob.html'>EplusJob</a> class. Also, an object
 in <code>Output:SQLite</code> with <code>Option Type</code> value of <code>SimpleAndTabular</code> will be
-automatically created if it does not exists like <code><a href='idf.html'>Idf</a></code> class.</p>
+automatically created if it does not exists like <a href='Idf.html'>Idf</a> class.</p>
     
     <h2 class="hasAnchor" id="usage"><a class="anchor" href="#usage"></a>Usage</h2>
 
@@ -185,9 +185,9 @@ param$report_data_dict(which = NULL)
 param$report_data(which = NULL, key_value = NULL, name = NULL, year = NULL, tz = "GMT", case = "auto")
 param$tabular_data(which = NULL)
 </pre>
-    <p>All those functions have the same meaning as in <a href='job.html'>EplusJob class</a>, except
+    <p>All those functions have the same meaning as in <a href='EplusJob.html'>EplusJob</a> class, except
 that they only return the results of specified simulations. Most arguments
-have the same meanings as in <a href='job.html'>EplusJob class</a>.</p>
+have the same meanings as in <a href='EplusJob.html'>EplusJob</a> class.</p>
 <p><code>$run()</code> runs the all parametric simulations in parallel. The number of
 parallel EnergyPlus process can be controlled by
 <code><a href='eplusr_option.html'>eplusr_option("num_parallel")</a></code>. If <code>wait</code> is FALSE, then the job will be

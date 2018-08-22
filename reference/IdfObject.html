@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>EnergyPlus IDF object — idf_object • eplusr</title>
+<title>EnergyPlus IDF object — IdfObject • eplusr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,7 +30,7 @@
 
 
 
-<meta property="og:title" content="EnergyPlus IDF object — idf_object" />
+<meta property="og:title" content="EnergyPlus IDF object — IdfObject" />
 
 <meta property="og:description" content="IdfObject is an abstraction of a single object in an Idf. It provides
 more detail methods to modify objects. IdfObject can only be created from
@@ -104,7 +104,7 @@ IdfObject needs some shared data from parent Idf object." />
     <div class="page-header">
     <h1>EnergyPlus IDF object</h1>
     
-    <div class="hidden name"><code>idf_object.Rd</code></div>
+    <div class="hidden name"><code>IdfObject.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -165,7 +165,7 @@ attribute, then <code>NA</code> will returned.</p>
     <pre>idfobj$definition()
 </pre>
     <p><code>$definition()</code> returns the definition, i.e. the <code>IddObject</code>, of current
-class. For details of <code>IddObject</code>, please see <a href='idd_object.html'>IddObject class</a>.</p>
+class. For details of <code>IddObject</code>, please see <a href='IddObject.html'>IddObject</a> class.</p>
     
     <h2 class="hasAnchor" id="comment"><a class="anchor" href="#comment"></a>Comment</h2>
 
@@ -221,7 +221,7 @@ field name and <code>Field</code> is a single valid field index or name.</p>
 including auto-value (<code>autosize</code> and <code>autocalculate</code>), default value,
 value range, choices and references. Underneath, it returns a data.table
 with custom printing method. It is basically the same as
-<code>$field_possible()</code> in <a href='idd_object.html'>IddObject</a> class.</p>
+<code>$field_possible()</code> in <a href='IddObject.html'>IddObject</a> class.</p>
 <p><strong>Arguments</strong></p><ul>
 <li><p><code>which</code>: An integer vector of field indexes or a character vector of field
 names. Field names can be given in "lower-style", e.g. <code>"Thermal Resistance"</code> can be given as <code>"thermal_resistance"</code>.</p></li>
@@ -264,7 +264,7 @@ conflicts, missing required fields and invalid field value reference will
 also be done.</p></li>
 </ul>
     <p>For details about the underlying structure of returned value of
-<code>$validate()</code>, please <code>$validate()</code> in <code><a href='idf.html'>Idf</a></code> class.</p>
+<code>$validate()</code>, please <code>$validate()</code> in <a href='Idf.html'>Idf</a> class.</p>
     
     <h2 class="hasAnchor" id="cross-reference"><a class="anchor" href="#cross-reference"></a>Cross Reference</h2>
 
@@ -326,7 +326,7 @@ largest character length of values. Default: <code>FALSE</code>.</p></li>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='idf.html'>Idf class</a></p></div>
+    <div class='dont-index'><p><a href='Idf.html'>Idf</a> class</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -338,7 +338,7 @@ largest character length of values. Default: <code>FALSE</code>.</p></li>
 <span class='no'>mat</span> <span class='kw'>&lt;-</span> <span class='no'>idf</span>$<span class='no'>Material</span>$<span class='no'>C5_4_IN_HW_CONCRETE</span>
 
 <span class='co'># get object ID</span>
-<span class='no'>mat</span>$<span class='fu'>id</span>()</div><div class='output co'>#&gt; [1] 14</div><div class='input'>
+<span class='no'>mat</span>$<span class='fu'>id</span>()</div><div class='output co'>#&gt; [1] 63</div><div class='input'>
 <span class='co'># get object name</span>
 <span class='no'>mat</span>$<span class='fu'>name</span>()</div><div class='output co'>#&gt; [1] "C5 - 4 IN HW CONCRETE"</div><div class='input'>
 <span class='co'># NA will be returned if the class does not have name attribute. For example,</span>
@@ -367,7 +367,7 @@ largest character length of values. Default: <code>FALSE</code>.</p></li>
 <span class='co'># get object comments</span>
 <span class='no'>mat</span>$<span class='fu'>get_comment</span>()</div><div class='output co'>#&gt; character(0)</div><div class='input'>
 <span class='co'># add new object comments</span>
-<span class='no'>mat</span>$<span class='fu'>set_comment</span>(<span class='fu'>c</span>(<span class='st'>"This is a material named `WD01`"</span>, <span class='st'>"This object has an ID of 47"</span>))</div><div class='output co'>#&gt; IdfObject &lt;&lt;[ID:14] `C5 - 4 IN HW CONCRETE`&gt;&gt;`Material`
+<span class='no'>mat</span>$<span class='fu'>set_comment</span>(<span class='fu'>c</span>(<span class='st'>"This is a material named `WD01`"</span>, <span class='st'>"This object has an ID of 47"</span>))</div><div class='output co'>#&gt; IdfObject &lt;&lt;[ID:63] `C5 - 4 IN HW CONCRETE`&gt;&gt;`Material`
 #&gt; ───────────────────────────────── * COMMENTS * ─────────────────────────────────
 #&gt; !This is a material named `WD01`
 #&gt; !This object has an ID of 47
@@ -383,7 +383,7 @@ largest character length of values. Default: <code>FALSE</code>.</p></li>
 #&gt;  9: 0.65;              !- Visible Absorptance
 #&gt; ────────────────────────────────────────────────────────────────────────────────</div><div class='input'><span class='no'>mat</span>$<span class='fu'>get_comment</span>()</div><div class='output co'>#&gt; [1] "This is a material named `WD01`" "This object has an ID of 47"    </div><div class='input'>
 <span class='co'># append new comments</span>
-<span class='no'>mat</span>$<span class='fu'>set_comment</span>(<span class='st'>"This is an appended comment"</span>)</div><div class='output co'>#&gt; IdfObject &lt;&lt;[ID:14] `C5 - 4 IN HW CONCRETE`&gt;&gt;`Material`
+<span class='no'>mat</span>$<span class='fu'>set_comment</span>(<span class='st'>"This is an appended comment"</span>)</div><div class='output co'>#&gt; IdfObject &lt;&lt;[ID:63] `C5 - 4 IN HW CONCRETE`&gt;&gt;`Material`
 #&gt; ───────────────────────────────── * COMMENTS * ─────────────────────────────────
 #&gt; !This is a material named `WD01`
 #&gt; !This object has an ID of 47
@@ -401,7 +401,7 @@ largest character length of values. Default: <code>FALSE</code>.</p></li>
 #&gt; ────────────────────────────────────────────────────────────────────────────────</div><div class='input'><span class='no'>mat</span>$<span class='fu'>get_comment</span>()</div><div class='output co'>#&gt; [1] "This is a material named `WD01`" "This object has an ID of 47"    
 #&gt; [3] "This is an appended comment"    </div><div class='input'>
 <span class='co'># prepend new comments</span>
-<span class='no'>mat</span>$<span class='fu'>set_comment</span>(<span class='st'>"This is a prepended comment"</span>, <span class='kw'>append</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; IdfObject &lt;&lt;[ID:14] `C5 - 4 IN HW CONCRETE`&gt;&gt;`Material`
+<span class='no'>mat</span>$<span class='fu'>set_comment</span>(<span class='st'>"This is a prepended comment"</span>, <span class='kw'>append</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; IdfObject &lt;&lt;[ID:63] `C5 - 4 IN HW CONCRETE`&gt;&gt;`Material`
 #&gt; ───────────────────────────────── * COMMENTS * ─────────────────────────────────
 #&gt; !This is a prepended comment
 #&gt; !This is a material named `WD01`
@@ -420,7 +420,7 @@ largest character length of values. Default: <code>FALSE</code>.</p></li>
 #&gt; ────────────────────────────────────────────────────────────────────────────────</div><div class='input'><span class='no'>mat</span>$<span class='fu'>get_comment</span>()</div><div class='output co'>#&gt; [1] "This is a prepended comment"     "This is a material named `WD01`"
 #&gt; [3] "This object has an ID of 47"     "This is an appended comment"    </div><div class='input'>
 <span class='co'># wrap long comments</span>
-<span class='no'>mat</span>$<span class='fu'>set_comment</span>(<span class='st'>"This is a very long comment that is needed to be wrapped."</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>30</span>)</div><div class='output co'>#&gt; IdfObject &lt;&lt;[ID:14] `C5 - 4 IN HW CONCRETE`&gt;&gt;`Material`
+<span class='no'>mat</span>$<span class='fu'>set_comment</span>(<span class='st'>"This is a very long comment that is needed to be wrapped."</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>30</span>)</div><div class='output co'>#&gt; IdfObject &lt;&lt;[ID:63] `C5 - 4 IN HW CONCRETE`&gt;&gt;`Material`
 #&gt; ───────────────────────────────── * COMMENTS * ─────────────────────────────────
 #&gt; !This is a prepended comment
 #&gt; !This is a material named `WD01`
@@ -442,7 +442,7 @@ largest character length of values. Default: <code>FALSE</code>.</p></li>
 #&gt; [3] "This object has an ID of 47"     "This is an appended comment"    
 #&gt; [5] "This is a very long comment"     "that is needed to be wrapped."  </div><div class='input'>
 <span class='co'># delete old comments and add new one</span>
-<span class='no'>mat</span>$<span class='fu'>set_comment</span>(<span class='st'>"This is the only comment"</span>, <span class='kw'>append</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</div><div class='output co'>#&gt; IdfObject &lt;&lt;[ID:14] `C5 - 4 IN HW CONCRETE`&gt;&gt;`Material`
+<span class='no'>mat</span>$<span class='fu'>set_comment</span>(<span class='st'>"This is the only comment"</span>, <span class='kw'>append</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</div><div class='output co'>#&gt; IdfObject &lt;&lt;[ID:63] `C5 - 4 IN HW CONCRETE`&gt;&gt;`Material`
 #&gt; ───────────────────────────────── * COMMENTS * ─────────────────────────────────
 #&gt; !This is the only comment
 #&gt; ────────────────────────────────── * VALUES * ──────────────────────────────────
@@ -457,7 +457,7 @@ largest character length of values. Default: <code>FALSE</code>.</p></li>
 #&gt;  9: 0.65;              !- Visible Absorptance
 #&gt; ────────────────────────────────────────────────────────────────────────────────</div><div class='input'><span class='no'>mat</span>$<span class='fu'>get_comment</span>()</div><div class='output co'>#&gt; [1] "This is the only comment"</div><div class='input'>
 <span class='co'># delete all comments</span>
-<span class='no'>mat</span>$<span class='fu'>set_comment</span>(<span class='kw'>NULL</span>)</div><div class='output co'>#&gt; IdfObject &lt;&lt;[ID:14] `C5 - 4 IN HW CONCRETE`&gt;&gt;`Material`
+<span class='no'>mat</span>$<span class='fu'>set_comment</span>(<span class='kw'>NULL</span>)</div><div class='output co'>#&gt; IdfObject &lt;&lt;[ID:63] `C5 - 4 IN HW CONCRETE`&gt;&gt;`Material`
 #&gt; ────────────────────────────────── * VALUES * ──────────────────────────────────
 #&gt; ★1: C5 - 4 IN HW CONCRETE,  !- Name
 #&gt; ★2: MediumRough,       !- Roughness
@@ -525,7 +525,7 @@ largest character length of values. Default: <code>FALSE</code>.</p></li>
 #&gt; [1] 2242.585
 #&gt; </div><div class='input'>
 <span class='co'># set field values</span>
-<span class='no'>mat</span>$<span class='fu'>set_value</span>(<span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"new_name"</span>, <span class='kw'>Thickness</span> <span class='kw'>=</span> <span class='fl'>0.02</span>)</div><div class='output co'>#&gt; IdfObject &lt;&lt;[ID:14] `new_name`&gt;&gt;`Material`
+<span class='no'>mat</span>$<span class='fu'>set_value</span>(<span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"new_name"</span>, <span class='kw'>Thickness</span> <span class='kw'>=</span> <span class='fl'>0.02</span>)</div><div class='output co'>#&gt; IdfObject &lt;&lt;[ID:63] `new_name`&gt;&gt;`Material`
 #&gt; ────────────────────────────────── * VALUES * ──────────────────────────────────
 #&gt; ★1: new_name,          !- Name
 #&gt; ★2: MediumRough,       !- Roughness
@@ -550,7 +550,7 @@ largest character length of values. Default: <code>FALSE</code>.</p></li>
 #&gt; $Solar_Absorptance
 #&gt; [1] 0.65
 #&gt; </div><div class='input'>
-<span class='no'>mat</span>$<span class='fu'>set_value</span>(<span class='kw'>visible_absorptance</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>Solar_Absorptance</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; IdfObject &lt;&lt;[ID:14] `new_name`&gt;&gt;`Material`
+<span class='no'>mat</span>$<span class='fu'>set_value</span>(<span class='kw'>visible_absorptance</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>Solar_Absorptance</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; IdfObject &lt;&lt;[ID:63] `new_name`&gt;&gt;`Material`
 #&gt; ────────────────────────────────── * VALUES * ──────────────────────────────────
 #&gt; ★1: new_name,          !- Name
 #&gt; ★2: MediumRough,       !- Roughness
@@ -585,13 +585,13 @@ largest character length of values. Default: <code>FALSE</code>.</p></li>
 <span class='no'>mat</span>$<span class='fu'>ref_from_object</span>() <span class='co'># not referencing other objects</span></div><div class='output co'>#&gt; <span class='message'>Object does not reference from any other object.</span></div><div class='input'><span class='no'>mat</span>$<span class='fu'>has_ref_from</span>()</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
 
 <span class='co'># get other objects that reference this object</span>
-<span class='no'>mat</span>$<span class='fu'>ref_by_object</span>() <span class='co'># referenced by construction "FLOOR"</span></div><div class='output co'>#&gt; <span class='message'>1 object found that reference the target object [ID: 14].</span></div><div class='output co'>#&gt; $FLOOR
-#&gt; IdfObject &lt;&lt;[ID:16] `FLOOR`&gt;&gt;`Construction`
+<span class='no'>mat</span>$<span class='fu'>ref_by_object</span>() <span class='co'># referenced by construction "FLOOR"</span></div><div class='output co'>#&gt; <span class='message'>1 object found that reference the target object [ID: 63].</span></div><div class='output co'>#&gt; $FLOOR
+#&gt; IdfObject &lt;&lt;[ID:65] `FLOOR`&gt;&gt;`Construction`
 #&gt; ────────────────────────────────── * VALUES * ──────────────────────────────────
 #&gt; ★1: FLOOR,             !- Name
 #&gt; ★2: another_name;      !- Outside Layer
 #&gt; ────────────────────────────────────────────────────────────────────────────────
-#&gt; </div><div class='input'><span class='fu'>names</span>(<span class='no'>mat</span>$<span class='fu'>ref_by_object</span>())</div><div class='output co'>#&gt; <span class='message'>1 object found that reference the target object [ID: 14].</span></div><div class='output co'>#&gt; [1] "FLOOR"</div><div class='input'>
+#&gt; </div><div class='input'><span class='fu'>names</span>(<span class='no'>mat</span>$<span class='fu'>ref_by_object</span>())</div><div class='output co'>#&gt; <span class='message'>1 object found that reference the target object [ID: 63].</span></div><div class='output co'>#&gt; [1] "FLOOR"</div><div class='input'>
 <span class='no'>mat</span>$<span class='fu'>has_ref_by</span>()</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
 <span class='co'># check if having any referenced objects or is referenced by other objects</span>
 <span class='no'>mat</span>$<span class='fu'>has_ref</span>()</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
@@ -692,7 +692,7 @@ largest character length of values. Default: <code>FALSE</code>.</p></li>
 #&gt; [11] "0.7;                         !- Visible Absorptance"   
 #&gt; [12] ""                                                      </div><div class='input'>
 <span class='co'># print the object without comment</span>
-<span class='no'>mat</span>$<span class='fu'>print</span>(<span class='kw'>comment</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; IdfObject &lt;&lt;[ID:14] `another_name`&gt;&gt;`Material`
+<span class='no'>mat</span>$<span class='fu'>print</span>(<span class='kw'>comment</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; IdfObject &lt;&lt;[ID:63] `another_name`&gt;&gt;`Material`
 #&gt; ────────────────────────────────── * VALUES * ──────────────────────────────────
 #&gt; ★1: another_name,      !- Name
 #&gt; ★2: MediumRough,       !- Roughness
@@ -706,7 +706,7 @@ largest character length of values. Default: <code>FALSE</code>.</p></li>
 #&gt; ────────────────────────────────────────────────────────────────────────────────</div><div class='input'>
 <span class='co'># print the object, and auto separate field values and field names at the</span>
 <span class='co'># largetst character length of field values</span>
-<span class='no'>mat</span>$<span class='fu'>print</span>(<span class='kw'>auto_sep</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; IdfObject &lt;&lt;[ID:14] `another_name`&gt;&gt;`Material`
+<span class='no'>mat</span>$<span class='fu'>print</span>(<span class='kw'>auto_sep</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; IdfObject &lt;&lt;[ID:63] `another_name`&gt;&gt;`Material`
 #&gt; ────────────────────────────────── * VALUES * ──────────────────────────────────
 #&gt; ★1: another_name,  !- Name
 #&gt; ★2: MediumRough,   !- Roughness

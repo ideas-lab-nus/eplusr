@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Parse, Query and Modify EnergyPlus Input Data Dictionary (IDD) — idd • eplusr</title>
+<title>Parse, Query and Modify EnergyPlus Input Data Dictionary (IDD) — Idd • eplusr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,7 +30,7 @@
 
 
 
-<meta property="og:title" content="Parse, Query and Modify EnergyPlus Input Data Dictionary (IDD) — idd" />
+<meta property="og:title" content="Parse, Query and Modify EnergyPlus Input Data Dictionary (IDD) — Idd" />
 
 <meta property="og:description" content="eplusr provides parsing of and programmatic access to EnergyPlus
 Input Data Dictionary (IDD) files, and objects. It contains all data needed
@@ -103,7 +103,7 @@ IddObject provides detailed information of curtain class." />
     <div class="page-header">
     <h1>Parse, Query and Modify EnergyPlus Input Data Dictionary (IDD)</h1>
     
-    <div class="hidden name"><code>idd.Rd</code></div>
+    <div class="hidden name"><code>Idd.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -145,7 +145,7 @@ eplusr uses a SQL-like structure to store both IDF and IDD data in
 <code>data.frame</code> format. Every IDD will be parsed and stored in twelve tables:</p><ul>
 <li><p><code>group</code>: contains group index and group names.</p></li>
 <li><p><code>class</code>: contains class names and properties.</p></li>
-<li><p><code>class</code>: contains class memos, i.e. a brief description on each class.</p></li>
+<li><p><code>class_memo</code>: contains class memos, i.e. a brief description on each class.</p></li>
 <li><p><code>class_reference</code>: contains reference names of classes.</p></li>
 <li><p><code>field</code>: contains field names and field properties.</p></li>
 <li><p><code>field_note</code>: contains field notes.</p></li>
@@ -215,7 +215,7 @@ more convenient to get a single <code>IddObject</code>. Basically, <code>idd$Cla
 <code>idd[[ClassName]]</code>, is equivalent to <code>idd$object(ClassName)[[1]]</code>.
 Here, <code>ClassName</code> is a single valid class name where all characters other
 than letters and numbers are replaced by a underscore <code>_</code>.</p>
-<p>For details about <code>IddObject</code>, please see <a href='idd_object.html'>IddObject class</a>.</p>
+<p>For details about <code>IddObject</code>, please see <a href='IddObject.html'>IddObject</a> class.</p>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -224,14 +224,13 @@ than letters and numbers are replaced by a underscore <code>_</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='idd_object.html'>IddObject class</a> which provides detailed information of
+    <div class='dont-index'><p><a href='IddObject.html'>IddObject</a> class which provides detailed information of
 curtain class</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># get the Idd object of EnergyPlus v8.8</span>
-<span class='no'>idd</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='use_idd.html'>use_idd</a></span>(<span class='fl'>8.8</span>, <span class='kw'>download</span> <span class='kw'>=</span> <span class='st'>"auto"</span>)
-
+<span class='no'>idd</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='use_idd.html'>use_idd</a></span>(<span class='fl'>8.8</span>, <span class='kw'>download</span> <span class='kw'>=</span> <span class='st'>"auto"</span>)</div><div class='output co'>#&gt; <span class='message'>Idd v8.8.0 has not been parsed before. Try to locate `Energy+.idd` in EnergyPlus v8.8.0 installation folder `/usr/local/EnergyPlus-8-8-0`.</span></div><div class='output co'>#&gt; <span class='message'>IDD file found: `/usr/local/EnergyPlus-8-8-0/Energy+.idd`.</span></div><div class='output co'>#&gt; <span class='message'>Start parsing...</span></div><div class='input'>
 <span class='co'># version</span>
 <span class='no'>idd</span>$<span class='fu'>version</span>()</div><div class='output co'>#&gt; [1] ‘8.8.0’</div><div class='input'>
 <span class='co'># build</span>
