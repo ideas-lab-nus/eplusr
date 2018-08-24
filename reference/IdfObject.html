@@ -323,6 +323,14 @@ values and field names.  Default: <code>29</code>.</p></li>
     <pre>idfobj$print(comment = TRUE, auto_sep = FALSE)
 print(idfobj)
 </pre>
+    <p><code>$print()</code> prints the IdfObject. Basically, the print output can be divided
+into three parts:</p><pre>* OBJECT: object id and name (if applicable) and IDD class name of
+* COMMENTS: object comments
+* VALUES: fields and values of current IDD class. Required fields are
+  marked with bullet marks. Only the minimum fields are printed. E.g.,
+  the last printed field is either the last required field or the last
+  non-empty field.
+</pre>
     <p><strong>Arguments</strong></p><ul>
 <li><p><code>comment</code>: If <code>FALSE</code>, all comments will not be included.</p></li>
 <li><p><code>auto_sep</code>: If <code>TRUE</code>, values and field names will be separate at the

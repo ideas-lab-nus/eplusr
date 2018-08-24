@@ -287,19 +287,19 @@ number of field in the extensible group is 3.</p>
 <p><code>$is_numeric_field()</code> returns <code>TRUE</code> if the field value should be numeric.</p>
 <p><code>$is_integer_field()</code> returns <code>TRUE</code> if the field value should be an integer.</p>
 <p><code>$is_required_field()</code> returns <code>TRUE</code> if the field is required.</p>
-<p><code>$print()</code> prints the IdfObject. Basically, the print output can be divided
-into four parts:
-* CLASS: IDD class name of current object
-* MEMO: Brief description of the IDD class
+<p><code>$print()</code> prints the IddObject. Basically, the print output can be divided
+into four parts:</p><pre>* CLASS: IDD class name of current object
+* MEMO: brief description of the IDD class
 * PROPERTY: properties of the IDD class, including name of group it
-belongs to, whether it is an unique or required class and current total
-fields. The fields may increase if the IDD class is extensible, such as
-<code>Branch</code>, <code>ZoneList</code> and etc.
+  belongs to, whether it is an unique or required class and current total
+  fields. The fields may increase if the IDD class is extensible, such as
+  `Branch`, `ZoneList` and etc.
 * FIELDS: fields of current IDD class. Required fields are marked with
-<code>*</code>. If the class is extensible, only the first extensible group will
-be printed and two ellipses will be shown at the bottom. Fields in the
-extensible group will be marked with an arrow down surrounded by angle
-brackets.</p>
+  bullet marks. If the class is extensible, only the first extensible
+  group will be printed and two ellipses will be shown at the bottom.
+  Fields in the extensible group will be marked with an arrow down
+  surrounded by angle brackets.
+</pre>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
