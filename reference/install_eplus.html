@@ -116,7 +116,7 @@ install it.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>install_eplus</span>(<span class='kw'>ver</span> <span class='kw'>=</span> <span class='st'>"latest"</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>force</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>install_eplus</span>(<span class='kw'>ver</span> <span class='kw'>=</span> <span class='st'>"latest"</span>, <span class='kw'>force</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='fu'>download_eplus</span>(<span class='kw'>ver</span> <span class='kw'>=</span> <span class='st'>"latest"</span>, <span class='no'>dir</span>)</pre>
     
@@ -129,19 +129,14 @@ install it.</p>
 <code>"latest"</code>, which is the default, means the latest version.</p></td>
     </tr>
     <tr>
-      <th>dir</th>
-      <td><p>For <code>download_eplus()</code>, the directory to save EnergyPlus installer
-file. For <code>install_eplus()</code>, the directory to install EnergyPlus, e.g.
-"C:\", and "/usr/local". If <code>NULL</code>, the default installation path is
-used. Please see details if you want to know the default path. If not
-<code>NULL</code>, the directory will be created first if not exists. <strong>NOTE</strong>:
-changing the installation path only works on Windows and Linux, not on
-macOS. Default: <code>NULL</code>.</p></td>
-    </tr>
-    <tr>
       <th>force</th>
       <td><p>Whether to install EnergyPlus even if it has already been
 installed.</p></td>
+    </tr>
+    <tr>
+      <th>dir</th>
+      <td><p>Where to save EnergyPlus installer file. For <code>install_eplus()</code>,
+the installer will be saved into <code>tempdir()</code></p></td>
     </tr>
     </table>
     
@@ -163,30 +158,22 @@ also be returned:</p><ul>
 
     <p><code>download_eplus()</code> downloads specified version of EnergyPlus from
 <a href='https://github.com/NREL/EnergyPlus'>EnergyPlus GitHub Repository</a>.</p>
-<p><code>install_eplus()</code> will try to install EnergyPlus into the specified
-location. The default location is <code>C:\EnergyPlusVX-Y-0</code> on Windows,
-<code>/usr/local/EnergyPlus-X-Y-0</code> on Linux, and
-<code>/Applications/EnergyPlus-X-Y-0</code> on macOS. You can change the <strong>parent
-folder</strong>, i.e. <code>C:\</code> and <code>/usr/local</code> using the <code>dir</code> argument. However,
-this only works on Windows and Linux, not on macOS.</p>
+<p><code>install_eplus()</code> will try to install EnergyPlus into the default location,
+e.g.  <code>C:\EnergyPlusVX-Y-0</code> on Windows, <code>/usr/local/EnergyPlus-X-Y-0</code> on
+Linux, and <code>/Applications/EnergyPlus-X-Y-0</code> on macOS.</p>
 <p>Note that the installation process requires administrative privileges
 during the installation and you have to run R with administrator (or with
-sudo if you are on Linux) to make it work if you are not in interactive
-mode.</p>
+sudo if you are on Linux) to make it work if you are not in interactive mode.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'># for the latest version of EnergyPlus</span>
-<span class='fu'>download_eplus</span>(<span class='st'>"latest"</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'>tempdir</span>())</div><div class='output co'>#&gt; <span class='message'>The installer file of EnergyPlus v8.9.0 `EnergyPlus-8.9.0-40101eaafd-Linux-x86_64.sh` has been successfully downloaded into /tmp/Rtmpt4Qwp4.</span></div><div class='input'><span class='fu'>install_eplus</span>(<span class='st'>"latest"</span>)</div><div class='output co'>#&gt; <span class='message'>Starting to download EnergyPlus v8.9.0...</span>
-#&gt; <span class='message'>════════════════════════════════════════════════════════════════════════════════</span></div><div class='output co'>#&gt; <span class='message'>The installer file of EnergyPlus v8.9.0 `EnergyPlus-8.9.0-40101eaafd-Linux-x86_64.sh` has been successfully downloaded into /tmp/Rtmpt4Qwp4.</span></div><div class='output co'>#&gt; <span class='message'>Starting to install EnergyPlus v8.9.0...</span>
-#&gt; <span class='message'>════════════════════════════════════════════════════════════════════════════════</span></div><div class='output co'>#&gt; <span class='message'>NOTE: Administrative privileges required during installation. Please make sure R is running with an administrator acount or equivalent.</span></div><div class='output co'>#&gt; <span class='message'>EnergyPlus v8.9.0 successfully installed into /usr/local/EnergyPus-8-9-0.</span></div><div class='output co'>#&gt; <span class='error'>Error: `eplus` should be either a valid EnergyPlus version or an EnergyPlus installation path.</span></div><div class='input'>
+<span class='fu'>download_eplus</span>(<span class='st'>"latest"</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'>tempdir</span>())</div><div class='output co'>#&gt; <span class='message'>The installer file of EnergyPlus v8.9.0 `EnergyPlus-8.9.0-40101eaafd-Linux-x86_64.sh` has been successfully downloaded into /tmp/Rtmp2NTTYy.</span></div><div class='input'><span class='fu'>install_eplus</span>(<span class='st'>"latest"</span>)</div><div class='output co'>#&gt; <span class='message'>Starting to download EnergyPlus v8.9.0...</span>
+#&gt; <span class='message'>════════════════════════════════════════════════════════════════════════════════</span></div><div class='output co'>#&gt; <span class='message'>The installer file of EnergyPlus v8.9.0 `EnergyPlus-8.9.0-40101eaafd-Linux-x86_64.sh` has been successfully downloaded into /tmp/Rtmp2NTTYy.</span></div><div class='output co'>#&gt; <span class='message'>Starting to install EnergyPlus v8.9.0...</span>
+#&gt; <span class='message'>════════════════════════════════════════════════════════════════════════════════</span></div><div class='output co'>#&gt; <span class='message'>NOTE: Administrative privileges required during installation. Please make sure R is running with an administrator acount or equivalent.</span></div><div class='output co'>#&gt; <span class='message'>EnergyPlus v8.9.0 successfully installed into /usr/local/EnergyPlus-8-9-0.</span></div><div class='output co'>#&gt; <span class='message'>EnergyPlus v8.9.0 located at `/usr/local/EnergyPlus-8-9-0` has been added.</span></div><div class='input'>
 <span class='co'># for a specific version of EnergyPlus</span>
-<span class='fu'>download_eplus</span>(<span class='fl'>8.8</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'>tempdir</span>())</div><div class='output co'>#&gt; <span class='message'>The installer file of EnergyPlus v8.8.0 `EnergyPlus-8.8.0-7c3bbe4830-Linux-x86_64.sh` has been successfully downloaded into /tmp/Rtmpt4Qwp4.</span></div><div class='input'><span class='fu'>install_eplus</span>(<span class='fl'>8.8</span>)</div><div class='output co'>#&gt; <span class='error'>Error: It seems EnergyPlus v8.8.0has been alreadyinstalled at `/usr/local/EnergyPlus-8-8-0`. Set `force` to TRUE to reinstall.</span></div><div class='input'>
-<span class='co'># install EnergyPlus into a specified folder</span>
-<span class='fu'>install_eplus</span>(<span class='fl'>8.7</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"C:\\Program Files"</span>)</div><div class='output co'>#&gt; <span class='message'>Starting to download EnergyPlus v8.7.0...</span>
-#&gt; <span class='message'>════════════════════════════════════════════════════════════════════════════════</span></div><div class='output co'>#&gt; <span class='message'>The installer file of EnergyPlus v8.7.0 `EnergyPlus-8.7.0-78a111df4a-Linux-x86_64.sh` has been successfully downloaded into /tmp/Rtmpt4Qwp4.</span></div><div class='output co'>#&gt; <span class='message'>Starting to install EnergyPlus v8.7.0...</span>
-#&gt; <span class='message'>════════════════════════════════════════════════════════════════════════════════</span></div><div class='output co'>#&gt; <span class='message'>NOTE: Administrative privileges required during installation. Please make sure R is running with an administrator acount or equivalent.</span></div><div class='output co'>#&gt; <span class='error'>Error: Failed to install EnergyPlus v8.7.0.</span></div></pre>
+<span class='fu'>download_eplus</span>(<span class='fl'>8.8</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'>tempdir</span>())</div><div class='output co'>#&gt; <span class='message'>The installer file of EnergyPlus v8.8.0 `EnergyPlus-8.8.0-7c3bbe4830-Linux-x86_64.sh` has been successfully downloaded into /tmp/Rtmp2NTTYy.</span></div><div class='input'><span class='fu'>install_eplus</span>(<span class='fl'>8.8</span>)</div><div class='output co'>#&gt; <span class='error'>Error: It seems EnergyPlus v8.8.0has been alreadyinstalled at `/usr/local/EnergyPlus-8-8-0`. Set `force` to TRUE to reinstall.</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
