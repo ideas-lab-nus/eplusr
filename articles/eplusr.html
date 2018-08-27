@@ -73,7 +73,7 @@
       <h1>Introduction to eplusr</h1>
                         <h4 class="author">Hongyuan Jia</h4>
             
-            <h4 class="date">2018-08-24</h4>
+            <h4 class="date">2018-08-27</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/hongyuanjia/eplusr/blob/master/vignettes/eplusr.Rmd"><code>vignettes/eplusr.Rmd</code></a></small>
       <div class="hidden name"><code>eplusr.Rmd</code></div>
@@ -144,7 +144,7 @@
 <a class="sourceLine" id="cb5-5" data-line-number="5"></a>
 <a class="sourceLine" id="cb5-6" data-line-number="6">model</a>
 <a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; ══ EnergPlus Input Data File ══════════════════════════════════════════════</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; ● Path: `/tmp/RtmpaR3EmJ/5Zone_Transformer.idf`</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; ● Path: `/tmp/Rtmp3MhWSV/5Zone_Transformer.idf`</span></a>
 <a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; ● Version: `8.8`</span></a>
 <a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt; Group: `Simulation Parameters`</span></a>
@@ -645,7 +645,7 @@
 <a class="sourceLine" id="cb27-3" data-line-number="3"><span class="co">#&gt; $rp_test_3</span></a>
 <a class="sourceLine" id="cb27-4" data-line-number="4"><span class="co">#&gt; IdfObject &lt;&lt;[ID:326] `rp_test_3`&gt;&gt;`RunPeriod`</span></a>
 <a class="sourceLine" id="cb27-5" data-line-number="5"><span class="co">#&gt; ─────────────────────────────── * COMMENTS * ──────────────────────────────</span></a>
-<a class="sourceLine" id="cb27-6" data-line-number="6"><span class="co">#&gt; !2018-08-24</span></a>
+<a class="sourceLine" id="cb27-6" data-line-number="6"><span class="co">#&gt; !2018-08-27</span></a>
 <a class="sourceLine" id="cb27-7" data-line-number="7"><span class="co">#&gt; !begin day has been changed.</span></a>
 <a class="sourceLine" id="cb27-8" data-line-number="8"><span class="co">#&gt; ──────────────────────────────── * VALUES * ───────────────────────────────</span></a>
 <a class="sourceLine" id="cb27-9" data-line-number="9"><span class="co">#&gt;   1: rp_test_3,         !- Name</span></a>
@@ -865,7 +865,7 @@
 <p>eplusr uses the EnergyPlus command line interface which was introduced since EnergyPlus v8.3.0, which means that <code>$run()</code> only supports models with version higher than v8.3.0.</p>
 <p>eplusr will auto-detect already installed EnergyPlus in the standard installation locations. You can get all detected EnergyPlus versions using <code><a href="../reference/use_eplus.html">avail_eplus()</a></code>.</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw"><a href="../reference/use_eplus.html">avail_eplus</a></span>()</a>
-<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="co">#&gt; [1] "8.8.0" "8.9.0"</span></a></code></pre></div>
+<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="co">#&gt; [1] "8.7.0" "8.8.0" "8.9.0"</span></a></code></pre></div>
 <p><code>$run()</code> will issue an error if corresponding version of EnergyPlus is not found. If your EnergyPlus was not installed in standard location, you can add that location into eplusr EnergyPlus location dictionary using <code><a href="../reference/use_eplus.html">use_eplus()</a></code>.</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="kw"><a href="../reference/use_eplus.html">use_eplus</a></span>(<span class="st">"C:/EnergyPlusV8-8-0"</span>)</a></code></pre></div>
 <p>If the needed version of EnergyPlus was not installed, you can use <code><a href="../reference/install_eplus.html">install_eplus()</a></code> to install it.</p>
@@ -953,13 +953,13 @@
 <a class="sourceLine" id="cb42-6" data-line-number="6"><span class="co">#&gt; Adding object `Output:SQLite` and setting `Option Type` to `SimpleAndTabular`.</span></a>
 <a class="sourceLine" id="cb42-7" data-line-number="7"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb42-8" data-line-number="8"><span class="co">#&gt; ── Info ───────────────────────────────────────────────────────────────────</span></a>
-<a class="sourceLine" id="cb42-9" data-line-number="9"><span class="co">#&gt; Replace the existing file located  at /tmp/RtmpaR3EmJ/5Zone_Transformer.idf.</span></a>
+<a class="sourceLine" id="cb42-9" data-line-number="9"><span class="co">#&gt; Replace the existing file located  at /tmp/Rtmp3MhWSV/5Zone_Transformer.idf.</span></a>
 <a class="sourceLine" id="cb42-10" data-line-number="10"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb42-11" data-line-number="11"><span class="co">#&gt; ExpandObjects Started.</span></a>
 <a class="sourceLine" id="cb42-12" data-line-number="12"><span class="co">#&gt; No expanded file generated.</span></a>
 <a class="sourceLine" id="cb42-13" data-line-number="13"><span class="co">#&gt; ExpandObjects Finished. Time:     0.016</span></a>
 <a class="sourceLine" id="cb42-14" data-line-number="14"><span class="co">#&gt; EnergyPlus Starting</span></a>
-<a class="sourceLine" id="cb42-15" data-line-number="15"><span class="co">#&gt; EnergyPlus, Version 8.8.0-7c3bbe4830, YMD=2018.08.24 18:31</span></a>
+<a class="sourceLine" id="cb42-15" data-line-number="15"><span class="co">#&gt; EnergyPlus, Version 8.8.0-7c3bbe4830, YMD=2018.08.27 10:52</span></a>
 <a class="sourceLine" id="cb42-16" data-line-number="16"><span class="co">#&gt; Processing Data Dictionary</span></a>
 <a class="sourceLine" id="cb42-17" data-line-number="17"><span class="co">#&gt; Processing Input File</span></a>
 <a class="sourceLine" id="cb42-18" data-line-number="18"><span class="co">#&gt; Initializing Response Factors</span></a>
@@ -1041,29 +1041,32 @@
 <a class="sourceLine" id="cb42-94" data-line-number="94"><span class="co">#&gt;  ReadVarsESO program starting.</span></a>
 <a class="sourceLine" id="cb42-95" data-line-number="95"><span class="co">#&gt;  ReadVars Run Time=00hr 00min  0.02sec</span></a>
 <a class="sourceLine" id="cb42-96" data-line-number="96"><span class="co">#&gt;  ReadVarsESO program completed successfully.</span></a>
-<a class="sourceLine" id="cb42-97" data-line-number="97"><span class="co">#&gt; EnergyPlus Run Time=00hr 00min  1.00sec</span></a>
+<a class="sourceLine" id="cb42-97" data-line-number="97"><span class="co">#&gt; EnergyPlus Run Time=00hr 00min  1.09sec</span></a>
 <a class="sourceLine" id="cb42-98" data-line-number="98">job</a>
 <a class="sourceLine" id="cb42-99" data-line-number="99"><span class="co">#&gt; ── EnergyPlus Simulation Job ──────────────────────────────────────────────</span></a>
-<a class="sourceLine" id="cb42-100" data-line-number="100"><span class="co">#&gt; ● Model: `/tmp/RtmpaR3EmJ/5Zone_Transformer.idf`</span></a>
-<a class="sourceLine" id="cb42-101" data-line-number="101"><span class="co">#&gt; ● Weather: `/tmp/RtmpaR3EmJ/San_Francisco.epw`</span></a>
+<a class="sourceLine" id="cb42-100" data-line-number="100"><span class="co">#&gt; ● Model: `/tmp/Rtmp3MhWSV/5Zone_Transformer.idf`</span></a>
+<a class="sourceLine" id="cb42-101" data-line-number="101"><span class="co">#&gt; ● Weather: `/tmp/Rtmp3MhWSV/San_Francisco.epw`</span></a>
 <a class="sourceLine" id="cb42-102" data-line-number="102"><span class="co">#&gt; ● EnergyPlus Version: `8.8.0`</span></a>
 <a class="sourceLine" id="cb42-103" data-line-number="103"><span class="co">#&gt; ● EnergyPlus Path: `/usr/local/EnergyPlus-8-8-0`</span></a>
-<a class="sourceLine" id="cb42-104" data-line-number="104"><span class="co">#&gt;  Simulation started at `2018-08-24 18:31:35` and completed successfully after 1.07 secs.</span></a></code></pre></div>
+<a class="sourceLine" id="cb42-104" data-line-number="104"><span class="co">#&gt;  Simulation started at `2018-08-27 10:52:25` and completed successfully after 1.14 secs.</span></a></code></pre></div>
 <div id="print-simulation-errors" class="section level3">
 <h3 class="hasAnchor">
 <a href="#print-simulation-errors" class="anchor"></a>Print simulation errors</h3>
 <p>You can get simulation errors using <code>$errors()</code>.</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1">job<span class="op">$</span><span class="kw">errors</span>()</a>
 <a class="sourceLine" id="cb43-2" data-line-number="2"><span class="co">#&gt; ══ During Zone Sizing Calculations ════════════════════════════════════════</span></a>
-<a class="sourceLine" id="cb43-3" data-line-number="3"><span class="co">#&gt; ┌──────────────────────────────────────────────────────────────────────────────────────────────────────────┐</span></a>
-<a class="sourceLine" id="cb43-4" data-line-number="4"><span class="co">#&gt; │Warning[1/1] Weather file location will be used rather than entered (IDF) Location object.                │</span></a>
-<a class="sourceLine" id="cb43-5" data-line-number="5"><span class="co">#&gt; │  ..Location object=CHICAGO_IL_USA TMY2-94846                                                             │</span></a>
-<a class="sourceLine" id="cb43-6" data-line-number="6"><span class="co">#&gt; │  ..Weather File Location=San Francisco Intl Ap CA USA TMY3 WMO#=724940                                   │</span></a>
-<a class="sourceLine" id="cb43-7" data-line-number="7"><span class="co">#&gt; │  ..due to location differences, Latitude difference=[4.16] degrees, Longitude difference=[34.65] degrees.│</span></a>
-<a class="sourceLine" id="cb43-8" data-line-number="8"><span class="co">#&gt; │  ..Time Zone difference=[2.0] hour(s), Elevation difference=[98.95] percent, [188.00] meters.            │</span></a>
-<a class="sourceLine" id="cb43-9" data-line-number="9"><span class="co">#&gt; └──────────────────────────────────────────────────────────────────────────────────────────────────────────┘</span></a>
-<a class="sourceLine" id="cb43-10" data-line-number="10"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb43-11" data-line-number="11"><span class="co">#&gt; EnergyPlus completed successfully with 1 Warning.</span></a></code></pre></div>
+<a class="sourceLine" id="cb43-3" data-line-number="3"><span class="co">#&gt; ┌─────────────────────────────────────────────────────────────────────────┐</span></a>
+<a class="sourceLine" id="cb43-4" data-line-number="4"><span class="co">#&gt; │Warning[1/1] Weather file location will be used rather than entered (IDF)│</span></a>
+<a class="sourceLine" id="cb43-5" data-line-number="5"><span class="co">#&gt; │Location object.                                                         │</span></a>
+<a class="sourceLine" id="cb43-6" data-line-number="6"><span class="co">#&gt; │..Location object=CHICAGO_IL_USA TMY2-94846                              │</span></a>
+<a class="sourceLine" id="cb43-7" data-line-number="7"><span class="co">#&gt; │..Weather File Location=San Francisco Intl Ap CA USA TMY3 WMO#=724940    │</span></a>
+<a class="sourceLine" id="cb43-8" data-line-number="8"><span class="co">#&gt; │..due to location differences, Latitude difference=[4.16] degrees,       │</span></a>
+<a class="sourceLine" id="cb43-9" data-line-number="9"><span class="co">#&gt; │Longitude difference=[34.65] degrees.                                    │</span></a>
+<a class="sourceLine" id="cb43-10" data-line-number="10"><span class="co">#&gt; │..Time Zone difference=[2.0] hour(s), Elevation difference=[98.95]       │</span></a>
+<a class="sourceLine" id="cb43-11" data-line-number="11"><span class="co">#&gt; │percent, [188.00] meters.                                                │</span></a>
+<a class="sourceLine" id="cb43-12" data-line-number="12"><span class="co">#&gt; └─────────────────────────────────────────────────────────────────────────┘</span></a>
+<a class="sourceLine" id="cb43-13" data-line-number="13"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb43-14" data-line-number="14"><span class="co">#&gt; EnergyPlus completed successfully with 1 Warning.</span></a></code></pre></div>
 </div>
 <div id="retrieve-simulation-output" class="section level3">
 <h3 class="hasAnchor">
@@ -1115,8 +1118,8 @@
 <a class="sourceLine" id="cb47-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb47-3" data-line-number="3">param</a>
 <a class="sourceLine" id="cb47-4" data-line-number="4"><span class="co">#&gt; ── EnergPlus Parametric Job ───────────────────────────────────────────────</span></a>
-<a class="sourceLine" id="cb47-5" data-line-number="5"><span class="co">#&gt; ● Seed Model: `/tmp/RtmpaR3EmJ/5Zone_Transformer.idf`</span></a>
-<a class="sourceLine" id="cb47-6" data-line-number="6"><span class="co">#&gt; ● Weather: `/tmp/RtmpaR3EmJ/San_Francisco.epw`</span></a>
+<a class="sourceLine" id="cb47-5" data-line-number="5"><span class="co">#&gt; ● Seed Model: `/tmp/Rtmp3MhWSV/5Zone_Transformer.idf`</span></a>
+<a class="sourceLine" id="cb47-6" data-line-number="6"><span class="co">#&gt; ● Weather: `/tmp/Rtmp3MhWSV/San_Francisco.epw`</span></a>
 <a class="sourceLine" id="cb47-7" data-line-number="7"><span class="co">#&gt; ● EnergyPlus Version: `8.8.0`</span></a>
 <a class="sourceLine" id="cb47-8" data-line-number="8"><span class="co">#&gt; ● EnergyPlus Path: `/usr/local/EnergyPlus-8-8-0`</span></a>
 <a class="sourceLine" id="cb47-9" data-line-number="9"><span class="co">#&gt; &lt;&lt; No measure has been applied &gt;&gt;</span></a></code></pre></div>
@@ -1171,13 +1174,13 @@
 <a class="sourceLine" id="cb50-5" data-line-number="5"><span class="co">#&gt; 3|RUNNING    --&gt; [IDF]`set_infil_rate_3.idf` + [EPW]`San_Francisco.epw`</span></a>
 <a class="sourceLine" id="cb50-6" data-line-number="6"><span class="co">#&gt; 1|COMPLETED  --&gt; [IDF]`set_infil_rate_1.idf` + [EPW]`San_Francisco.epw`</span></a>
 <a class="sourceLine" id="cb50-7" data-line-number="7"><span class="co">#&gt; 4|RUNNING    --&gt; [IDF]`set_infil_rate_4.idf` + [EPW]`San_Francisco.epw`</span></a>
-<a class="sourceLine" id="cb50-8" data-line-number="8"><span class="co">#&gt; 3|COMPLETED  --&gt; [IDF]`set_infil_rate_3.idf` + [EPW]`San_Francisco.epw`</span></a>
+<a class="sourceLine" id="cb50-8" data-line-number="8"><span class="co">#&gt; 4|COMPLETED  --&gt; [IDF]`set_infil_rate_4.idf` + [EPW]`San_Francisco.epw`</span></a>
 <a class="sourceLine" id="cb50-9" data-line-number="9"><span class="co">#&gt; 5|RUNNING    --&gt; [IDF]`set_infil_rate_5.idf` + [EPW]`San_Francisco.epw`</span></a>
-<a class="sourceLine" id="cb50-10" data-line-number="10"><span class="co">#&gt; 4|COMPLETED  --&gt; [IDF]`set_infil_rate_4.idf` + [EPW]`San_Francisco.epw`</span></a>
+<a class="sourceLine" id="cb50-10" data-line-number="10"><span class="co">#&gt; 3|COMPLETED  --&gt; [IDF]`set_infil_rate_3.idf` + [EPW]`San_Francisco.epw`</span></a>
 <a class="sourceLine" id="cb50-11" data-line-number="11"><span class="co">#&gt; 5|COMPLETED  --&gt; [IDF]`set_infil_rate_5.idf` + [EPW]`San_Francisco.epw`</span></a>
 <a class="sourceLine" id="cb50-12" data-line-number="12"><span class="co">#&gt; ── EnergPlus Parametric Job ───────────────────────────────────────────────</span></a>
-<a class="sourceLine" id="cb50-13" data-line-number="13"><span class="co">#&gt; ● Seed Model: `/tmp/RtmpaR3EmJ/5Zone_Transformer.idf`</span></a>
-<a class="sourceLine" id="cb50-14" data-line-number="14"><span class="co">#&gt; ● Weather: `/tmp/RtmpaR3EmJ/San_Francisco.epw`</span></a>
+<a class="sourceLine" id="cb50-13" data-line-number="13"><span class="co">#&gt; ● Seed Model: `/tmp/Rtmp3MhWSV/5Zone_Transformer.idf`</span></a>
+<a class="sourceLine" id="cb50-14" data-line-number="14"><span class="co">#&gt; ● Weather: `/tmp/Rtmp3MhWSV/San_Francisco.epw`</span></a>
 <a class="sourceLine" id="cb50-15" data-line-number="15"><span class="co">#&gt; ● EnergyPlus Version: `8.8.0`</span></a>
 <a class="sourceLine" id="cb50-16" data-line-number="16"><span class="co">#&gt; ● EnergyPlus Path: `/usr/local/EnergyPlus-8-8-0`</span></a>
 <a class="sourceLine" id="cb50-17" data-line-number="17"><span class="co">#&gt; ● Applied Measure: `set_infil_rate`</span></a>
@@ -1187,7 +1190,7 @@
 <a class="sourceLine" id="cb50-21" data-line-number="21"><span class="co">#&gt;   - set_infil_rate_3</span></a>
 <a class="sourceLine" id="cb50-22" data-line-number="22"><span class="co">#&gt;   - set_infil_rate_4</span></a>
 <a class="sourceLine" id="cb50-23" data-line-number="23"><span class="co">#&gt;   - set_infil_rate_5</span></a>
-<a class="sourceLine" id="cb50-24" data-line-number="24"><span class="co">#&gt;  Simulation started at `2018-08-24 18:31:38` and completed successfully after 6.9 secs.</span></a></code></pre></div>
+<a class="sourceLine" id="cb50-24" data-line-number="24"><span class="co">#&gt;  Simulation started at `2018-08-27 10:52:28` and completed successfully after 8.23 secs.</span></a></code></pre></div>
 <p>After all simulations completed, let’s see the variations of total energy.</p>
 <div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1">tab &lt;-<span class="st"> </span>param<span class="op">$</span><span class="kw">tabular_data</span>()</a>
 <a class="sourceLine" id="cb51-2" data-line-number="2"></a>
