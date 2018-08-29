@@ -115,6 +115,14 @@
 <li>Long lines in err files now will be wrapped when printed.</li>
 </ul>
 </div>
+<div id="bug-fixes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<ul>
+<li><p>Fix the error when checking invalid extensible fields in value validation.</p></li>
+<li><p>Fix the error that value references did not get updated when setting values to <code>NA</code> in <code>$set_value()</code> in <code>IdfObject</code> and <code>$set_object()</code> in <code>Idf</code>.</p></li>
+</ul>
+</div>
 </div>
     <div id="eplusr-0-9-0" class="section level1">
 <h1 class="page-header">
@@ -159,9 +167,9 @@
 <li><p><code><a href="../reference/run_model.html">run_idf()</a></code> and <code><a href="../reference/run_model.html">run_multi()</a></code> now does not call <code><a href="../reference/clean_wd.html">clean_wd()</a></code> as this is automatically handled by EnergyPlus itself.</p></li>
 </ul>
 </div>
-<div id="bug-fixes" class="section level2">
+<div id="bug-fixes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li><p>Fix errors when try to get units <code>$field_name()</code>, <code>$field_unit()</code> and <code>$field_default()</code> in <code>IddObject</code> class.</p></li>
 <li><p>Fix the error that <code>$get_value()</code> and <code>$table()</code> in <code>IdfObject</code> class did not return all field values even <code>all</code> was set to <code>TRUE</code>.</p></li>
@@ -198,9 +206,9 @@
 <li><p><code>$dup_object()</code> will give an error if given <code>new_name</code> is the an existing object name.</p></li>
 </ul>
 </div>
-<div id="bug-fixes-1" class="section level2">
+<div id="bug-fixes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-2" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li><p>Fix errors in <code>$status()</code>, <code>$output_dir()</code> and <code>$locate_output()</code> in <code>ParametricJob</code> class when <code>which</code> arg is not given (<a href='https://github.com/hongyuanjia/eplusr/issues/12'>#12</a>).</p></li>
 <li><p>Fix idf input version parsing in <code>param_job</code> (<a href='https://github.com/hongyuanjia/eplusr/issues/13'>#13</a>).</p></li>
@@ -230,9 +238,9 @@
 <li>The names of returned list of <code>$get_value()</code> in <code>IdfObject</code> is “underscore” name, not lower name. This makes its behavior being consistent with <code>$object()</code> in <code>Idf</code> class.</li>
 </ul>
 </div>
-<div id="bug-fixes-2" class="section level2">
+<div id="bug-fixes-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-2" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-3" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li><p>Fix warning messages of column type coercion from data.table in <code>Idf</code> and <code>IdfObject</code>.</p></li>
 <li><p><code>$set_value()</code> in <code>IdfObject</code> and <code>$set_object()</code> in <code>Idf</code> now will delete empty fields with empty value. This fix the error when trying to reassign only some empty fields which have been deleted before.</p></li>
