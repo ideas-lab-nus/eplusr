@@ -58,7 +58,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">eplusr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.9.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.9.1.9000</span>
       </span>
     </div>
 
@@ -117,6 +117,13 @@
 <li><p>Apply multiple weather file to a seed in <code>ParametricJob</code> class</p></li>
 <li><p>Add more tests on value reference updating during value modifications.</p></li>
 <li><p>Only use minimal columns in data modifications to speed up the whole process</p></li>
+<li><p>Change the column names of returned data.tables to lower case style in <code>$report_data_dict()</code> and <code>$report_data()</code>.</p></li>
+<li><p>Optimize table joins using <code><a href="http://www.rdocumentation.org/packages/data.table/topics/setkey">data.table::setindex()</a></code>, <code>mult</code> argument in <code><a href="http://www.rdocumentation.org/packages/data.table/topics/data.table">data.table::data.table()</a></code></p></li>
+<li><p>Change <code><a href="reference/clean_wd.html">clean_wd()</a></code> to make it work properly in <code><a href="reference/run_model.html">run_multi()</a></code>.</p></li>
+<li><p>Use <code><a href="http://www.rdocumentation.org/packages/data.table/topics/fread">data.table::fread(sep = NULL)</a></code> instead of <code><a href="http://www.rdocumentation.org/packages/readr/topics/read_lines">readr::read_lines()</a></code></p></li>
+<li><p>Add functionality to parse <code>.rdd</code> and <code>.mdd</code> file and add possible output variables into the Idf, possibly also a gui interface providing autocompletion using <code>DT::datatable()</code> and <code>parse_rdd_file()</code>.</p></li>
+<li><p>Add functionality that can set objects using input data.frame instead of nested list.</p></li>
+<li><p>Add external file dependency (e.g. file existance in <code>Schedule:File</code> class) checking in <code>$validate()</code>.</p></li>
 </ul>
 
   </div>

@@ -62,7 +62,7 @@ output files of previous simulation." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eplusr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.9.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.9.1.9000</span>
       </span>
     </div>
 
@@ -130,9 +130,10 @@ output files of previous simulation.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><code>clean_wd()</code> imitates the same process that EnergyPlus does whenever a new
-simulation is getting to start. It deletes all related output files that have
-the same name prefix as the input path. The input model itself and any
-weather file are not deleted.</p>
+simulation is getting to start. It deletes all related output files that
+have the same name prefix as the input path. The input model itself and
+any weather file are not deleted. <code>clean_wd()</code> is called internally when
+running EnergyPlus models using <code><a href='run_model.html'>run_idf()</a></code> and <code><a href='run_model.html'>run_multi()</a></code>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
