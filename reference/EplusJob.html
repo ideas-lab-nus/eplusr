@@ -62,7 +62,7 @@ methods to extract simulation outputs." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eplusr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.9.1.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.9.2</span>
       </span>
     </div>
 
@@ -153,6 +153,7 @@ job$locate_output(suffix = ".err", strict = TRUE)
 job$report_data_dict()
 job$report_data(key_value = NULL, name = NULL, year = NULL, tz = "GMT", case = "auto")
 job$tabular_data()
+job$clone(deep = FALSE)
 job$print()
 </pre>
     
@@ -241,6 +242,19 @@ will be the current year. Default: <code>NULL</code></p></li>
 of this simulation. If <code>"auto"</code>, the name of the IDF file will be used.</p></li>
 </ul>
     
+    <h2 class="hasAnchor" id="clone"><a class="anchor" href="#clone"></a>Clone</h2>
+
+    <pre>job$clone(deep = FALSE)
+</pre>
+    <p><code>$clone()</code> copies and returns the cloned job. Because <code>EplusJob</code> uses
+<code>R6Class</code> under the hook which has "modify-in-place" semantics, <code>job_2 &lt;- job_1</code> does not copy <code>job_1</code> at all but only create a new binding to
+<code>job_1</code>.  Modify <code>job_1</code> will also affect <code>job_2</code> as well, as these two
+are exactly the same thing underneath. In order to create a complete
+cloned copy, please use <code>$clone(deep = TRUE)</code>.</p>
+<p><strong>Arguments</strong></p><ul>
+<li><p><code>deep</code>: Has to be <code>TRUE</code> if a complete cloned copy is desired.</p></li>
+</ul>
+    
     <h2 class="hasAnchor" id="printing"><a class="anchor" href="#printing"></a>Printing</h2>
 
     <pre>job$print()
@@ -309,7 +323,7 @@ whenever <code>$print()</code> is called.</p>
     <span class='co'># does not exist</span>
     <span class='no'>job</span>$<span class='fu'>locate_output</span>(<span class='st'>".exe"</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
-    <span class='co'># retreive simulation results will fail if there is no EnergyPlus SQL output.</span>
+    <span class='co'># retrieve simulation results will fail if there is no EnergyPlus SQL output.</span>
     <span class='no'>job</span>$<span class='fu'>report_data_dict</span>()
 
     <span class='co'># instead, using `$run()` method in Idf class, which will add an</span>
@@ -338,7 +352,7 @@ whenever <code>$print()</code> is called.</p>
 #&gt; No expanded file generated.
 #&gt; ExpandObjects Finished. Time:     0.000
 #&gt; EnergyPlus Starting
-#&gt; EnergyPlus, Version 8.8.0-7c3bbe4830, YMD=2018.09.04 14:24
+#&gt; EnergyPlus, Version 8.8.0-7c3bbe4830, YMD=2018.09.27 15:27
 #&gt; Processing Data Dictionary
 #&gt; Processing Input File
 #&gt; Initializing Simulation
@@ -449,13 +463,13 @@ whenever <code>$print()</code> is called.</p>
 #&gt; Writing tabular output file results using XML format.
 #&gt; Writing final SQL reports
 #&gt;  ReadVarsESO program starting.
-#&gt;  ReadVars Run Time=00hr 00min  0.26sec
+#&gt;  ReadVars Run Time=00hr 00min  0.27sec
 #&gt;  ReadVarsESO program completed successfully.
 #&gt;  ReadVarsESO program starting.
 #&gt;  ReadVars Run Time=00hr 00min  0.12sec
 #&gt;  ReadVarsESO program completed successfully.
-#&gt; EnergyPlus Run Time=00hr 00min  1.95sec
-#&gt; </div><div class='output co'>#&gt; <span class='error'>Error: Path '/tmp/RtmpfuVo4l/1ZoneUncontrolled.exe' does not exist</span></div></pre>
+#&gt; EnergyPlus Run Time=00hr 00min  2.61sec
+#&gt; </div><div class='output co'>#&gt; <span class='error'>Error: Path '/tmp/Rtmp0Ryy65/1ZoneUncontrolled.exe' does not exist</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -474,6 +488,8 @@ whenever <code>$print()</code> is called.</p>
       <li><a href="#run">Run</a></li>
 
       <li><a href="#results-extraction">Results Extraction</a></li>
+
+      <li><a href="#clone">Clone</a></li>
 
       <li><a href="#printing">Printing</a></li>
 

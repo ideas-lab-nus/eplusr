@@ -62,7 +62,7 @@ of EnergyPlus simulations." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eplusr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.9.1.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.9.2</span>
       </span>
     </div>
 
@@ -140,6 +140,7 @@ param$locate_output(which = NULL, suffix = ".err", strict = TRUE)
 param$report_data_dict(which = NULL)
 param$report_data(which = NULL, key_value = NULL, name = NULL, year = NULL, tz = "GMT", case = "auto")
 param$tabular_data(which = NULL)
+job$clone(deep = FALSE)
 param$print()
 </pre>
     
@@ -247,6 +248,19 @@ will be the current year. Default: <code>NULL</code></p></li>
 <li><p><code>tz</code>: Time zone of date and time in column <code>DateTime</code>. Default: <code>"GMT"</code>.</p></li>
 </ul>
     
+    <h2 class="hasAnchor" id="clone"><a class="anchor" href="#clone"></a>Clone</h2>
+
+    <pre>job$clone(deep = FALSE)
+</pre>
+    <p><code>$clone()</code> copies and returns the cloned job. Because <code>ParametricJob</code> uses
+<code>R6Class</code> under the hook which has "modify-in-place" semantics, <code>job_2 &lt;- job_1</code> does not copy <code>job_1</code> at all but only create a new binding to
+<code>job_1</code>. Modify <code>job_1</code> will also affect <code>job_2</code> as well, as these two
+are exactly the same thing underneath. In order to create a complete
+cloned copy, please use <code>$clone(deep = TRUE)</code>.</p>
+<p><strong>Arguments</strong></p><ul>
+<li><p><code>deep</code>: Has to be <code>TRUE</code> if a complete cloned copy is desired.</p></li>
+</ul>
+    
     <h2 class="hasAnchor" id="printing"><a class="anchor" href="#printing"></a>Printing</h2>
 
     <pre>param$print()
@@ -301,6 +315,8 @@ whenever <code>$print()</code> is called.</p>
       <li><a href="#apply-design-alternatives">Apply Design Alternatives</a></li>
 
       <li><a href="#run-and-collect-results">Run and Collect Results</a></li>
+
+      <li><a href="#clone">Clone</a></li>
 
       <li><a href="#printing">Printing</a></li>
       
