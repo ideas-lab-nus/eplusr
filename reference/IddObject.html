@@ -438,7 +438,9 @@ into four parts:</p><pre>* CLASS: IDD class name of current object
 #&gt; [0, 1]
 #&gt; </div><div class='input'>
 # get all possible values of fields
-</div><div class='input'><span class='no'>mat</span>$<span class='fu'>field_possible</span>()</div><div class='output co'>#&gt; <span class='error'>Error: Function can only be used in IddObjects that are created inside an Idf or IdfObject using `$definition()`.</span></div><div class='input'>
+</div><span class='co'># NOT RUN {</span>
+<span class='no'>mat</span>$<span class='fu'>field_possible</span>()
+<span class='co'># }</span><div class='input'>
 <span class='co'># check if input is a valid field number for current class</span>
 <span class='co'>## get required minimum field number</span>
 <span class='no'>mat</span>$<span class='fu'>min_fields</span>()</div><div class='output co'>#&gt; [1] 6</div><div class='input'>
@@ -459,7 +461,9 @@ into four parts:</p><pre>* CLASS: IDD class name of current object
 <span class='co'># check if input field index is an extensible field index</span>
 <span class='no'>bran</span>$<span class='fu'>is_extensible_index</span>(<span class='fl'>1</span>:<span class='fl'>4</span>)</div><div class='output co'>#&gt; [1] FALSE FALSE  TRUE  TRUE</div><div class='input'>
 # get all field referneces
-</div><div class='input'><span class='no'>bran</span>$<span class='fu'>field_reference</span>(<span class='fl'>1</span>:<span class='fl'>4</span>)</div><div class='output co'>#&gt; <span class='error'>Error: Function can only be used in IddObjects that are created inside an Idf or IdfObject using `$definition()`.</span></div><div class='input'>
+</div><span class='co'># NOT RUN {</span>
+<span class='no'>bran</span>$<span class='fu'>field_reference</span>(<span class='fl'>1</span>:<span class='fl'>4</span>)
+<span class='co'># }</span><div class='input'>
 <span class='co'># check if input is valid field name</span>
 <span class='co'># NOTE: lower-style names are treated as valid</span>
 <span class='no'>mat</span>$<span class='fu'>is_valid_field_name</span>(<span class='fu'>c</span>(<span class='st'>"nAmE"</span>, <span class='st'>"specific heat"</span>, <span class='st'>"Specific Heat"</span>, <span class='st'>"specific_heat"</span>))</div><div class='output co'>#&gt; [1] FALSE FALSE  TRUE  TRUE</div><div class='input'>

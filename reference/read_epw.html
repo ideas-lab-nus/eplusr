@@ -147,12 +147,14 @@ with some simplifications. For more details on <code>Epw</code>, please see <a h
         <span class='st'>"USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw"</span>
    )
    <span class='no'>epw</span> <span class='kw'>&lt;-</span> <span class='fu'>read_epw</span>(<span class='no'>path_epw</span>)
-}</div><div class='input'><span class='co'># read an EPW file from EnergyPlus website</span>
+}</div><span class='co'># NOT RUN {</span>
+<span class='co'># read an EPW file from EnergyPlus website</span>
 <span class='no'>path_base</span> <span class='kw'>&lt;-</span> <span class='st'>"https://energyplus.net/weather-download"</span>
 <span class='no'>path_region</span> <span class='kw'>&lt;-</span> <span class='st'>"north_and_central_america_wmo_region_4/USA/CA"</span>
 <span class='no'>path_file</span> <span class='kw'>&lt;-</span> <span class='st'>"USA_CA_San.Francisco.Intl.AP.724940_TMY3/USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw"</span>
 <span class='no'>path_epw</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(<span class='no'>path_base</span>, <span class='no'>path_region</span>, <span class='no'>path_file</span>)
-<span class='no'>epw</span> <span class='kw'>&lt;-</span> <span class='fu'>read_epw</span>(<span class='no'>path_epw</span>)</div></pre>
+<span class='no'>epw</span> <span class='kw'>&lt;-</span> <span class='fu'>read_epw</span>(<span class='no'>path_epw</span>)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
