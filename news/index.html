@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eplusr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.3.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.4</span>
       </span>
     </div>
 
@@ -109,20 +109,63 @@
       <small>Source: <a href='https://github.com/hongyuanjia/eplusr/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="eplusr-0-9-3" class="section level1">
+    <div id="eplusr-0-9-4" class="section level1">
 <h1 class="page-header">
-<a href="#eplusr-0-9-3" class="anchor"></a>eplusr 0.9.3<small> 2018-10-11 </small>
+<a href="#eplusr-0-9-4" class="anchor"></a>eplusr 0.9.4<small> 2018-12-05 </small>
 </h1>
 <div id="new-features" class="section level2">
 <h2 class="hasAnchor">
 <a href="#new-features" class="anchor"></a>New features</h2>
 <ul>
-<li>Add support for EnergyPlus v9.0.0.</li>
+<li>Now you can directly download EnergyPus Weather File (.epw) and Design Day File (.ddy) using new function <code><a href="../reference/download_weather.html">download_weather()</a></code>. It takes a regular expression as input, searches through EnergyPlus weather data base (stored in this package), download corresponding files and return the saved paths. Below are some examples:
+<ul>
+<li>
+<p>Search locations that contains string <code>"los angeles"</code> and <code>"tmy"</code>, return a menu to select which one(s) to download. Once selected, download both corresponding weather file(s) and design day file(s):</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="../reference/download_weather.html">download_weather</a></span>(<span class="st">"los angeles.*tmy"</span>, <span class="dt">type =</span> <span class="st">"all"</span>, <span class="dt">ask =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+</li>
+<li>
+<p>Same as above, expect that all files will be renamed to <code>la.epw(ddy)</code>, <code>la_1.epw(ddy)</code>, <code>la_2.epw(ddy)</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="../reference/download_weather.html">download_weather</a></span>(<span class="st">"los angeles.*tmy"</span>, <span class="dt">filename =</span> <span class="st">"la"</span>, <span class="dt">type =</span> <span class="st">"all"</span>, <span class="dt">ask =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+</li>
+<li>
+<p>Search locations that contains string <code>"beijing"</code> and <code>"cswd"</code>. If no more than 3 results found, directly download all weather files and save them to temperory directory.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../reference/download_weather.html">download_weather</a></span>(<span class="st">"beijing.*cswd"</span>, <span class="dt">dir =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/tempfile">tempdir</a></span>(), <span class="dt">type =</span> <span class="st">"epw"</span>, <span class="dt">ask =</span> <span class="ot">FALSE</span>, <span class="dt">max_match =</span> <span class="dv">3</span>)</a></code></pre></div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="minor-changes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#minor-changes" class="anchor"></a>Minor changes</h2>
+<ul>
+<li>Now <code><a href="../reference/clean_wd.html">clean_wd()</a></code> is run before every call to EnergyPlus.</li>
 </ul>
 </div>
 <div id="bug-fixes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<ul>
+<li><p><code>$clone()</code> method has been refactored for <code>Idf</code> and <code>Idd</code> class. This fix the issue that internal shared environments were not cloned in version 0.9.3.</p></li>
+<li><p>Fix the error that <code>$save()</code> and <code>$string()</code> in <code>Idf</code> class did not respect <code>format</code> argument.</p></li>
+<li><p>Fix the error that <code>$apply_measure()</code> in <code>ParametricJob</code> class did not respect <code>.names</code> argument.</p></li>
+</ul>
+</div>
+</div>
+    <div id="eplusr-0-9-3" class="section level1">
+<h1 class="page-header">
+<a href="#eplusr-0-9-3" class="anchor"></a>eplusr 0.9.3<small> 2018-10-11 </small>
+</h1>
+<div id="new-features-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features-1" class="anchor"></a>New features</h2>
+<ul>
+<li>Add support for EnergyPlus v9.0.0.</li>
+</ul>
+</div>
+<div id="bug-fixes-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Remove duplicates when update value references (<a href='https://github.com/hongyuanjia/eplusr/issues/20'>#20</a>).</li>
 </ul>
@@ -139,24 +182,24 @@
 <li>Clean up the dirty code that manually modifies <code>$clone()</code> method in R6 in order to be compatible with (<a href='https://github.com/hongyuanjia/eplusr/issues/19'>#19</a>). After this, <code>deep</code> has to be set to <code>TRUE</code> if a completed cloned copy is desired. Also, documentations on <code>$clone()</code> method in <code>Epw</code>, <code>EplusJob</code>, <code>ParametricJob</code> have been added.</li>
 </ul>
 </div>
-<div id="minor-changes" class="section level2">
+<div id="minor-changes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes" class="anchor"></a>Minor changes</h2>
+<a href="#minor-changes-1" class="anchor"></a>Minor changes</h2>
 <ul>
 <li>
 <code><a href="../reference/clean_wd.html">clean_wd()</a></code> is called internally when running EnergyPlus models. This guarantees that the old output file from last simulation is cleaned up before the new simulation starts.</li>
 </ul>
 </div>
-<div id="new-features-1" class="section level2">
+<div id="new-features-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features-1" class="anchor"></a>New features</h2>
+<a href="#new-features-2" class="anchor"></a>New features</h2>
 <ul>
 <li>A new class <code>EplusSql</code> has been added. This makes it possible to directly retrieve simulation results without creating an <code>EplusJob</code> object which can only get simulation outputs after the job was successfully run before. It can be easily created using <code><a href="../reference/eplus_sql.html">eplus_sql()</a></code> function. However, it should be noted that, unlike <code>EplusJob</code>, there is no checking on whether the simulation is terminated or completed unsuccessfully, or the parent Idf has been changed since last simulation. This means that you may encounter some problems when retrieve data from an unsuccessful simulation. It is suggested to carefully go through the <code>.err</code> file to make sure the output data in the SQLite is correct and reliable. Currently, there are only few methods in <code>EplusSql</code> class which have some overlaps with theses in <code>EplusJob</code>, but more methods may be added in the future. For more details, please see the documentation of <code>EplusSql</code>.</li>
 </ul>
 </div>
-<div id="bug-fixes-1" class="section level2">
+<div id="bug-fixes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-2" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Fix the error of missing Idf file when <code>dir</code> is not <code>NULL</code> in <code>$run()</code> in <code>Idf</code> class.</li>
 </ul>
@@ -166,16 +209,16 @@
 <h1 class="page-header">
 <a href="#eplusr-0-9-1" class="anchor"></a>eplusr 0.9.1<small> 2018-08-29 </small>
 </h1>
-<div id="minor-changes-1" class="section level2">
+<div id="minor-changes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes-1" class="anchor"></a>Minor changes</h2>
+<a href="#minor-changes-2" class="anchor"></a>Minor changes</h2>
 <ul>
 <li>Long lines in err files now will be wrapped when printed.</li>
 </ul>
 </div>
-<div id="bug-fixes-2" class="section level2">
+<div id="bug-fixes-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-2" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-3" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li><p>Fix the error when checking invalid extensible fields in value validation.</p></li>
 <li><p>Fix the error that value references did not get updated when setting values to <code>NA</code> in <code>$set_value()</code> in <code>IdfObject</code> and <code>$set_object()</code> in <code>Idf</code>.</p></li>
@@ -198,9 +241,9 @@
 <li><p>Both argument <code>echo</code> and <code>wait</code> have been added to <code><a href="../reference/run_model.html">run_idf()</a></code> and <code><a href="../reference/run_model.html">run_multi()</a></code>. Unlike the behavior in eplusr 0.8.3 when <code>echo</code> is <code>TRUE</code> in <code><a href="../reference/run_model.html">run_idf()</a></code>, right now <code>echo</code> only control whether to show the output from EnergyPlus command line interface. Please use <code>wait</code> to control whether to wait until the simulation is complete or not.</p></li>
 </ul>
 </div>
-<div id="new-features-2" class="section level2">
+<div id="new-features-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features-2" class="anchor"></a>New features</h2>
+<a href="#new-features-3" class="anchor"></a>New features</h2>
 <ul>
 <li><p>Package documentation has been heavily updated. Examples of every exported class and most functions have been added. Also, an example IDF file <code>"1ZoneUncontrolled.idf"</code> from EnergyPus v8.8.0 is included in the package, which makes it possible to run most examples without installing EnergyPlus. Of cause, for examples in <code>EplusJob</code> and <code>ParametricJob</code> class, EnergyPlus installation is needed to run them successfully.</p></li>
 <li><p>The brilliant package <a href="https://CRAN.R-project.org/package=crayon">crayon</a> is used to support colorful printing of <code>Idd</code>, <code>Idf</code>, <code>IddObject</code>, <code>IdfObject</code>, <code>Epw</code>, <code>EplusJob</code> and <code>ParametricJob</code> classes.</p></li>
@@ -210,9 +253,9 @@
 <li><p>New methods <code>$field_reference()</code> and <code>$field_possible()</code> have been added into <code>IddObject</code> class. <code>$field_possible()</code> is basically the same as the <code>$possible_value()</code> in <code>IdfObject</code> class. This makes it possible to show all available references for a class that does not have any object yet. <code>$field_reference()</code> only returns all available reference values for specified fields. <strong>NOTE</strong>: <code>$field_reference()</code> and <code>$field_possible()</code> can only be used in <code>IddObject</code>s that are created using <code>$definition()</code> in <code>Idf</code> class and <code>IdfObject</code> class, and cannot be used in <code>IddObject</code>s that are created using <code>$object()</code> or equivalent in <code>Idd</code> class. This is because both methods need shared Idf value data to collect all reference values.</p></li>
 </ul>
 </div>
-<div id="minor-changes-2" class="section level2">
+<div id="minor-changes-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes-2" class="anchor"></a>Minor changes</h2>
+<a href="#minor-changes-3" class="anchor"></a>Minor changes</h2>
 <ul>
 <li><p><code><a href="../reference/use_eplus.html">use_eplus()</a></code> now returns an invisible list of EnergyPlus configure data instead of <code>NULL</code>.</p></li>
 <li><p>The default value of <code>dir</code> argument in <code><a href="../reference/install_eplus.html">download_eplus()</a></code> has been removed, which enforce the user to explicitly specify the directory to save EnergyPlus installer file, as per CRAN reviewer comment.</p></li>
@@ -225,9 +268,9 @@
 <li><p><code><a href="../reference/run_model.html">run_idf()</a></code> and <code><a href="../reference/run_model.html">run_multi()</a></code> now does not call <code><a href="../reference/clean_wd.html">clean_wd()</a></code> as this is automatically handled by EnergyPlus itself.</p></li>
 </ul>
 </div>
-<div id="bug-fixes-3" class="section level2">
+<div id="bug-fixes-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-3" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-4" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li><p>Fix errors when try to get units <code>$field_name()</code>, <code>$field_unit()</code> and <code>$field_default()</code> in <code>IddObject</code> class.</p></li>
 <li><p>Fix the error that <code>$get_value()</code> and <code>$table()</code> in <code>IdfObject</code> class did not return all field values even <code>all</code> was set to <code>TRUE</code>.</p></li>
@@ -243,18 +286,18 @@
 <h1 class="page-header">
 <a href="#eplusr-0-8-3" class="anchor"></a>eplusr 0.8.3<small> 2018-08-08 </small>
 </h1>
-<div id="new-features-3" class="section level2">
+<div id="new-features-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features-3" class="anchor"></a>New features</h2>
+<a href="#new-features-4" class="anchor"></a>New features</h2>
 <ul>
 <li><p>A new method <code>$possible_value()</code> has been added into <code>IdfObject</code> class, which will return all possible values for selected fields, including auto-value (autosize or autocalculate), default, range, choices and references.</p></li>
 <li><p>New parameter <code>dir</code> has been added to <code><a href="../reference/install_eplus.html">install_eplus()</a></code>, which makes it possible for keeping the downloaded EnergyPlus installation file.</p></li>
 <li><p><code>$dup_object()</code> in <code>Idf</code> class now can duplicate one object multiple times.</p></li>
 </ul>
 </div>
-<div id="minor-changes-3" class="section level2">
+<div id="minor-changes-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes-3" class="anchor"></a>Minor changes</h2>
+<a href="#minor-changes-4" class="anchor"></a>Minor changes</h2>
 <ul>
 <li><p>The names of returned list of <code>$get_value()</code> in <code>IdfObject</code> is “underscore” name, not lower name. This makes its behavior being consistent with <code>$object()</code> in <code>Idf</code> class.</p></li>
 <li><p>When <code>wait</code> is <code>FALSE</code>, <code>$run()</code> in <code>EplusJob</code> and <code>ParametricJob</code> will return itself instead of the time when simulation started.</p></li>
@@ -264,9 +307,9 @@
 <li><p><code>$dup_object()</code> will give an error if given <code>new_name</code> is the an existing object name.</p></li>
 </ul>
 </div>
-<div id="bug-fixes-4" class="section level2">
+<div id="bug-fixes-5" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-4" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-5" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li><p>Fix errors in <code>$status()</code>, <code>$output_dir()</code> and <code>$locate_output()</code> in <code>ParametricJob</code> class when <code>which</code> arg is not given (<a href='https://github.com/hongyuanjia/eplusr/issues/12'>#12</a>).</p></li>
 <li><p>Fix idf input version parsing in <code>param_job</code> (<a href='https://github.com/hongyuanjia/eplusr/issues/13'>#13</a>).</p></li>
@@ -289,16 +332,16 @@
 <code>$get_value()</code> in <code>IdfObject</code> class new has a new argument <code>simplify</code>. If <code>TRUE</code>, a character vecotr will be returned instead of a named list. Default is <code>FALSE</code>.</li>
 </ul>
 </div>
-<div id="minor-changes-4" class="section level2">
+<div id="minor-changes-5" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes-4" class="anchor"></a>Minor changes</h2>
+<a href="#minor-changes-5" class="anchor"></a>Minor changes</h2>
 <ul>
 <li>The names of returned list of <code>$get_value()</code> in <code>IdfObject</code> is “underscore” name, not lower name. This makes its behavior being consistent with <code>$object()</code> in <code>Idf</code> class.</li>
 </ul>
 </div>
-<div id="bug-fixes-5" class="section level2">
+<div id="bug-fixes-6" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-5" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-6" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li><p>Fix warning messages of column type coercion from data.table in <code>Idf</code> and <code>IdfObject</code>.</p></li>
 <li><p><code>$set_value()</code> in <code>IdfObject</code> and <code>$set_object()</code> in <code>Idf</code> now will delete empty fields with empty value. This fix the error when trying to reassign only some empty fields which have been deleted before.</p></li>
@@ -326,6 +369,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#eplusr-0-9-4">0.9.4</a></li>
         <li><a href="#eplusr-0-9-3">0.9.3</a></li>
         <li><a href="#eplusr-0-9-2">0.9.2</a></li>
         <li><a href="#eplusr-0-9-1">0.9.1</a></li>

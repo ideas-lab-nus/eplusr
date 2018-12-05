@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>eplusr: A Toolkit for Using EnergyPlus in R — eplusr-package • eplusr</title>
+<title>Download EnergyPlus Weather File (EPW) and Design Day File (DDY) — download_weather • eplusr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,12 +30,10 @@
 
 
 
-<meta property="og:title" content="eplusr: A Toolkit for Using EnergyPlus in R — eplusr-package" />
+<meta property="og:title" content="Download EnergyPlus Weather File (EPW) and Design Day File (DDY) — download_weather" />
 
-<meta property="og:description" content="A rich toolkit of using the whole building simulation program
-    'EnergyPlus'(&amp;lt;https://energyplus.net&amp;gt;), which enables programmatic
-    navigation, modification of 'EnergyPlus' models and makes it less painful to
-    do parametric simulations and analysis." />
+<meta property="og:description" content="download_weather() makes it easy to download EnergyPlus weather files (EPW)
+and design day files (DDY). Basically, it" />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -110,58 +108,74 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>eplusr: A Toolkit for Using EnergyPlus in R</h1>
-    <small class="dont-index">Source: <a href='https://github.com/hongyuanjia/eplusr/blob/master/R/eplusr.R'><code>R/eplusr.R</code></a></small>
-    <div class="hidden name"><code>eplusr-package.Rd</code></div>
+    <h1>Download EnergyPlus Weather File (EPW) and Design Day File (DDY)</h1>
+    <small class="dont-index">Source: <a href='https://github.com/hongyuanjia/eplusr/blob/master/R/epw.R'><code>R/epw.R</code></a></small>
+    <div class="hidden name"><code>download_weather.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>A rich toolkit of using the whole building simulation program
-    'EnergyPlus'(&lt;https://energyplus.net&gt;), which enables programmatic
-    navigation, modification of 'EnergyPlus' models and makes it less painful to
-    do parametric simulations and analysis.</p>
+    <p><code>download_weather()</code> makes it easy to download EnergyPlus weather files (EPW)
+and design day files (DDY). Basically, it</p>
     
     </div>
 
-        
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>eplusr provides a rich toolkit of using EnergyPlus directly in
-R, which enables programmatic navigation, modification of EnergyPlus models
-and makes it less painful to do parametric simulations and analysis.</p>
-<p>With eplusr, you can do:</p><ul>
-<li><p>Read, parse and modify EnergyPlus Weather File (EPW).</p></li>
-<li><p>Read and parse EnergyPlus IDF files.</p></li>
-<li><p>Query on models, including classes, objects and fields</p></li>
-<li><p>Directly add, modify, duplicate, and delete objects of IDF in R.</p></li>
-<li><p>Automatically change referred fields when modifying objects.</p></li>
-<li><p>Check any possible errors whenever modifications are made.</p></li>
-<li><p>Save the changed models into standard formats in the same way as IDFEditor
-distributed along with EnergyPlus.</p></li>
-<li><p>Run your models directly and collect the simulation output of EnergyPlus
-in R.</p></li>
-<li><p>Run parametric analysis in parallel and collect results in one go.</p></li>
-</ul>
+    <pre class="usage"><span class='fu'>download_weather</span>(<span class='no'>pattern</span>, <span class='kw'>filename</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"all"</span>,
+  <span class='st'>"epw"</span>, <span class='st'>"ddy"</span>), <span class='kw'>ask</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>max_match</span> <span class='kw'>=</span> <span class='fl'>3</span>)</pre>
     
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>pattern</th>
+      <td><p>A regular expression used to search locations, e.g. <code>"los angeles.*tmy3"</code>. The search is case-insensitive.</p></td>
+    </tr>
+    <tr>
+      <th>filename</th>
+      <td><p>File names (without extension) used to save downloaded files.
+Internally, <code><a href='https://www.rdocumentation.org/packages/base/topics/make.unique'>make.unique()</a></code> is called to ensure unique names.</p></td>
+    </tr>
+    <tr>
+      <th>dir</th>
+      <td><p>Directory to save downloaded files</p></td>
+    </tr>
+    <tr>
+      <th>type</th>
+      <td><p>File type to download. Should be one of <code>"all"</code>, <code>"epw"</code> and
+<code>"ddy"</code>. If <code>"all"</code>, both weather files and design day files will be
+downloaded.</p></td>
+    </tr>
+    <tr>
+      <th>ask</th>
+      <td><p>If <code>TRUE</code>, a command line menu will be shown to let you select
+which one to download. If <code>FALSE</code> and the number of returned results is
+less than <code>max_match</code>, files are downloaded automatically without asking.</p></td>
+    </tr>
+    <tr>
+      <th>max_match</th>
+      <td><p>The max results allowed to download when <code>ask</code> is <code>FALSE</code>.</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <div class='dont-index'><p>Useful links:</p><ul>
-<li><p><a href='https://hongyuanjia.github.io/eplusr'>https://hongyuanjia.github.io/eplusr</a></p></li>
-<li><p><a href='https://github.com/hongyuanjia/eplusr'>https://github.com/hongyuanjia/eplusr</a></p></li>
-<li><p>Report bugs at <a href='https://github.com/hongyuanjia/eplusr/issues'>https://github.com/hongyuanjia/eplusr/issues</a></p></li>
-</ul></div>
+    <p>A character vector containing paths of downloaded files.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='fu'>download_weather</span>(<span class='st'>"los angeles.*tmy3"</span>, <span class='st'>"la"</span>)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#details">Details</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-          </ul>
+      <li><a href="#value">Value</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
     <h2>Author</h2>
     <p>Hongyuan Jia</p>
